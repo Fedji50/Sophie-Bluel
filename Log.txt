@@ -1,0 +1,24 @@
+23/11/2023 15:40 : _ Récupération des données de l'API.
+		   _ Création du dépot Github et ajout des dossiers backend et frontend.
+		   _ Création des balises figure, img et figcaption avec la propriété "createElement". 
+
+24/11/2023 11h45 : _ Création des différents travaux de l'architecte. Essai avec un projet puis création de la fonction genreateProjects pour mise en place boucle pour l'ajout de tous les travaux.
+		     Insertion dans le fichier index.html avec "appendChild" et "innerHtml". Insertion dans le DOM avec appel de la fonction.
+
+26/11/2023 10h30 : _ Création en html des boutons pour les filtrage des différents travaux par catégorie "tous", "objets", "appartements", "hotels & restaurants".
+           16h30 : _ Ajout des propriétés aux classes CSS pour le design des boutons de filtrage.
+
+27/11/2023 08h30 : _ Rédaction du code JS pour le filtrage par catégorie:
+		   _ création des listes objets, appartements et hôtels & restaurants avec la fonction "filter".
+		   _ récuperation des boutons créés avec "getElementByID", ajout d'écouteur d'évènements avec "addEventListener" au click sur les boutons
+		   _ appel de [document.querySelector(".gallery").innerHTML= "";] pour empêcher l'affichage de la liste complète en plus des listes filtrées.
+		   _ appel de la fonction generateProjects avec les différentes listes en paramètres
+	   16h00 : _ début de la création de la page de connexion en HTML et la lier dans le fichier index.html
+
+28/11/2023 10h30 : _ Création et rédaction du fichier login.css pour la page de connexion login.html
+	   16h00 : _ Rectification du formulaire de connexion sur la page login.html:
+			_ mise en place d'un "placeholder" et d'une datalist pour la saisie
+	   18h00 : _ Création du fichier login.js pour le traitement de la requête de connexion
+		   _ 
+	   
+		     
