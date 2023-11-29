@@ -1,6 +1,3 @@
-//Récupération des valeurs du formulaire:
-
-
 
 //Sauvegarde des éléments du formulaire login sur l'API:
 
@@ -9,6 +6,7 @@ function saveLoginUser() {
     const form = document.querySelector("form");
     form.addEventListener("submit", (event) => {
         event.preventDefault();
+        //Récupération des valeurs du formulaire:
         const emailTag = document.getElementById("emailAddress").value;
         const passwordTag = document.getElementById("password").value;
         console.log("Pas de rechargement de la page")

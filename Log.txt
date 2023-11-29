@@ -19,6 +19,9 @@
 	   16h00 : _ Rectification du formulaire de connexion sur la page login.html:
 			_ mise en place d'un "placeholder" et d'une datalist pour la saisie
 	   18h00 : _ Création du fichier login.js pour le traitement de la requête de connexion
-		   _ 
+		   
+29/11/2023 10h00 : _ Création fonction saveLoginUser qui recupère les balises du formulaire de login et enregistre les infos sur l'API avec la requête POST et la fonction fetch.
+
+30/11/2023 14h00 : _  
 	   
 		     
