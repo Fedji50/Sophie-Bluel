@@ -22,6 +22,8 @@
 		   
 29/11/2023 10h00 : _ Création fonction saveLoginUser qui recupère les balises du formulaire de login et enregistre les infos sur l'API avec la requête POST et la fonction fetch.
 
-30/11/2023 14h00 : _  
+30/11/2023 21h50 : _ Création fonction validerEmail afin de verifier la composition de l'adresse mail et errorMailPassword pour vérifier la combinaison mail+password
+
+01/12/2023 
 	   
 		     
