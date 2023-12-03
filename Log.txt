@@ -24,6 +24,8 @@
 
 30/11/2023 21h50 : _ Création fonction validerEmail afin de verifier la composition de l'adresse mail et errorMailPassword pour vérifier la combinaison mail+password
 
-01/12/2023 
+03/12/2023 11h00 : _ Travail sur la fonction fetch de la fonction saveLoginUser (ajout des promesses then)
+
+04/12/2023 
 	   
 		     
