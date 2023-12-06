@@ -29,5 +29,6 @@
 
 06/12/2023 12:20 : _ Enregistrement de userId et token dans localStorage et les cookies avec la fonction setCookie.
 		   _ Ajout des icones et du mode édition dans le fichier index.html et modification fichier style.css avec les classes .editionMode et .editionBtn
+	   15:05 : _ modifs .editionMode et .editionBtn et ajouts de la div "projects" et du bouton "modifyBtn" et des classes CSS.
 	   
 		     
