@@ -2,9 +2,9 @@ function validationEmail() {
     //Permet de vérifier si l'email est au format souhaité qd je passe au champ du mot de passe:
     let passwordInput = document.querySelector("#password");
     passwordInput.addEventListener("focus", () => {
-        const emailTag = emailInput.value;
+        let emailTag = document.querySelector("#emailAddress").value;
     let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+");
-    if(emailRegExp.test(emailTag)) {
+    if(emailRegExp.test(emailTag) || emailTag === "") {
         console.log("L'email est valide");
     } else {
         alert("L'adresse mail n'est pas au bon format.");
@@ -30,9 +30,7 @@ function saveLoginUser() {
         const emailTag = document.getElementById("emailAddress").value;
         const passwordTag = document.getElementById("password").value;
         console.log("Pas de rechargement de la page")
-        console.log(emailTag);
-        console.log(passwordTag);
-
+        
         const loginValue = {
             email: emailTag,
             password : passwordTag,
@@ -40,7 +38,7 @@ function saveLoginUser() {
         //Vérification du mail et du mot de passe
         validationEmail(emailTag);
         errorEmailPassword(emailTag,passwordTag);
-
+        console.log(loginValue);
         //pour récupérer les informations de connexion (email, password, userId, token d'authentification)
         const url = "http://localhost:5678/api/users/login";
         try {
@@ -51,20 +49,33 @@ function saveLoginUser() {
                     "accept": "application/json"
                     },
                 body: JSON.stringify(loginValue),
+        
             });
 
             const dataId = await response.json();
             console.log(dataId);
             //Traitement de la reponse en chaîne JSON pr être stockée plus tard
-            let dataIdJSON = JSON.stringify(dataId);
-            console.log(dataIdJSON);
+            let userId = (dataId.userId);
+            let userName = "userId";
+            console.log(userId);
+            let token = (dataId.token);
+            let keyName = "token";
+            console.log(token);
             //Stockage de l'Id et du token dans le localStorage et les cookies
-            window.localStorage.setItem("key",dataIdJSON);
-            document.cookie="user-Sophie; secure; samesite=lax";          
+            window.localStorage.setItem("userId", userId);
+            window.localStorage.setItem("token", token);
+            function setCookie (name, value) {
+                document.cookie=`${name}=${value}; samesite=lax; path=/; Max-age=3600`         
+            };
+            setCookie(userName, userId);
+            setCookie(keyName, token);
+            
             } 
         catch (error) {
             console.log("Erreur : " + error)
             }          
-        }   
+        }
+
 )};
 saveLoginUser();
+

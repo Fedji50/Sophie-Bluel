@@ -63,3 +63,5 @@ hotelsRestoFilterBtn.addEventListener("click", function () {
     generateProjects(hotelsRestoList);
 });
 
+
+
