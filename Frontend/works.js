@@ -63,5 +63,39 @@ hotelsRestoFilterBtn.addEventListener("click", function () {
     generateProjects(hotelsRestoList);
 });
 
+//fonction pour afficher les éléments du mode édition quand l'utilisateur est loggé :
+let userId = window.localStorage.getItem("userId");
+let token = window.localStorage.getItem("token");
+console.log(userId);
+console.log(token);
 
+function editionMode (userId, token) {
+    //Récupération des différents éléments du DOM:
+    const editionMode = document.querySelector(".editionMode");
+    const loginHref = document.querySelector("#loginHref");
+    const logoutHref = document.querySelector("#logoutHref");
+    const modifyBtn = document.querySelector(".modifyBtn");
+    const filters = document.querySelector(".filters");
+    const projects = document.querySelector(".projects");
+    //Mise place d'une condition en fonction de la présence de l'Id et du token
+    if (userId === "" && token === "") {
+        editionMode.style.display = "none";
+        modifyBtn.style.display = "none";
+        logoutHref.style.display = "none";
+    } else {
+        filters.style.display = "none";
+        loginHref.style.display = "none";
+        projects.style.marginBottom = "4em";
+    }
+};
+editionMode();
 
+function removeLocalStorage() {
+    const logoutHref = document.querySelector("#logoutHref");
+    // Au clic sur le lien logout, on supprime le userId et le token du localStorage et des cookies
+    logoutHref.addEventListener("click", function () {
+        localStorage.removeItem("userID");
+        localStorage.removeItem("token");
+    });
+};
+removeLocalStorage();

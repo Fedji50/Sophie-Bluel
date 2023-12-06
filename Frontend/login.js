@@ -16,9 +16,9 @@ function errorEmailPassword(emailTag,passwordTag) {
     //Affiche un message d'alerte si la combinaison email-password est incorrect
     if (emailTag !== "sophie.bluel@test.tld" || passwordTag !== "S0phie" ) {
         return alert("La combinaison email - mot de passe n'est pas valide.");
-    } /*else {
+    } else {
         document.location.href="index.html";
-    }*/
+    }
 };
 
 //Sauvegarde des éléments du formulaire login sur l'API:
@@ -78,4 +78,5 @@ function saveLoginUser() {
 
 )};
 saveLoginUser();
+
 

@@ -30,5 +30,8 @@
 06/12/2023 12:20 : _ Enregistrement de userId et token dans localStorage et les cookies avec la fonction setCookie.
 		   _ Ajout des icones et du mode édition dans le fichier index.html et modification fichier style.css avec les classes .editionMode et .editionBtn
 	   15:05 : _ modifs .editionMode et .editionBtn et ajouts de la div "projects" et du bouton "modifyBtn" et des classes CSS.
+	   22:00 : _ màj works.js : Récuperation du userId et du token pour resté identifié, récupération des différents éléments du DOM (editionMode, loginHref, logoutHref,modifyBtn, filters, projects)
+		     et création de la fonction editionMode pour faire apparaitre et disparaitre des éléments quand on est connecté avec une condition if/else.
+		   _ Création fonction removeLocalStorage pour vider le localStorage au clic sur lien logoutHref. 
 	   
 		     
