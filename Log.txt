@@ -33,5 +33,7 @@
 	   22:00 : _ màj works.js : Récuperation du userId et du token pour resté identifié, récupération des différents éléments du DOM (editionMode, loginHref, logoutHref,modifyBtn, filters, projects)
 		     et création de la fonction editionMode pour faire apparaitre et disparaitre des éléments quand on est connecté avec une condition if/else.
 		   _ Création fonction removeLocalStorage pour vider le localStorage au clic sur lien logoutHref. 
+
+07/12/2023 14h00 : _ Modification works.js avec la fonction editionMode.
 	   
 		     

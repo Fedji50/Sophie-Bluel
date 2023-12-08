@@ -25,7 +25,7 @@ function generateProjects (works) {
         mainContainer.appendChild(figureElement);
     }
 }
-generateProjects(works);
+
 
 //Création des listes objets, appartements et Hotels & restaurants
 //Liste complète:
@@ -63,12 +63,13 @@ hotelsRestoFilterBtn.addEventListener("click", function () {
     generateProjects(hotelsRestoList);
 });
 
-//fonction pour afficher les éléments du mode édition quand l'utilisateur est loggé :
 let userId = window.localStorage.getItem("userId");
+userId = userId || "";
 let token = window.localStorage.getItem("token");
-console.log(userId);
-console.log(token);
-
+token = token || "";
+console.log("userId",userId);
+console.log("token",token);
+//fonction pour afficher les éléments du mode édition quand l'utilisateur est loggé:
 function editionMode (userId, token) {
     //Récupération des différents éléments du DOM:
     const editionMode = document.querySelector(".editionMode");
@@ -88,14 +89,18 @@ function editionMode (userId, token) {
         projects.style.marginBottom = "4em";
     }
 };
-editionMode();
+
 
 function removeLocalStorage() {
     const logoutHref = document.querySelector("#logoutHref");
     // Au clic sur le lien logout, on supprime le userId et le token du localStorage et des cookies
     logoutHref.addEventListener("click", function () {
-        localStorage.removeItem("userID");
+        localStorage.removeItem("userId");
         localStorage.removeItem("token");
+
     });
 };
+generateProjects(works);
+editionMode(userId,token);
 removeLocalStorage();
+

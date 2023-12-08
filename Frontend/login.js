@@ -1,3 +1,5 @@
+
+
 function validationEmail() {
     //Permet de vérifier si l'email est au format souhaité qd je passe au champ du mot de passe:
     let passwordInput = document.querySelector("#password");
@@ -12,12 +14,13 @@ function validationEmail() {
     }) 
 };
 
+
 function errorEmailPassword(emailTag,passwordTag) {
     //Affiche un message d'alerte si la combinaison email-password est incorrect
     if (emailTag !== "sophie.bluel@test.tld" || passwordTag !== "S0phie" ) {
         return alert("La combinaison email - mot de passe n'est pas valide.");
     } else {
-        document.location.href="index.html";
+        document.location.href="index.html";  
     }
 };
 
@@ -27,8 +30,8 @@ function saveLoginUser() {
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
         //Récupération des valeurs du formulaire:
-        const emailTag = document.getElementById("emailAddress").value;
-        const passwordTag = document.getElementById("password").value;
+        let emailTag = document.getElementById("emailAddress").value;
+        let passwordTag = document.getElementById("password").value;
         console.log("Pas de rechargement de la page")
         
         const loginValue = {
@@ -38,6 +41,7 @@ function saveLoginUser() {
         //Vérification du mail et du mot de passe
         validationEmail(emailTag);
         errorEmailPassword(emailTag,passwordTag);
+
         console.log(loginValue);
         //pour récupérer les informations de connexion (email, password, userId, token d'authentification)
         const url = "http://localhost:5678/api/users/login";
@@ -73,7 +77,9 @@ function saveLoginUser() {
             } 
         catch (error) {
             console.log("Erreur : " + error)
-            }          
+            }
+            
+            
         }
 
 )};
