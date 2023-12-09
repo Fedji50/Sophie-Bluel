@@ -67,8 +67,8 @@ let userId = window.localStorage.getItem("userId");
 userId = userId || "";
 let token = window.localStorage.getItem("token");
 token = token || "";
-console.log("userId",userId);
-console.log("token",token);
+console.log("userId =",userId);
+console.log("token =",token);
 //fonction pour afficher les éléments du mode édition quand l'utilisateur est loggé:
 function editionMode (userId, token) {
     //Récupération des différents éléments du DOM:
@@ -78,18 +78,19 @@ function editionMode (userId, token) {
     const modifyBtn = document.querySelector(".modifyBtn");
     const filters = document.querySelector(".filters");
     const projects = document.querySelector(".projects");
+    const projectsH2 = projects.querySelector("h2"); 
     //Mise place d'une condition en fonction de la présence de l'Id et du token
     if (userId === "" && token === "") {
         editionMode.style.display = "none";
         modifyBtn.style.display = "none";
         logoutHref.style.display = "none";
+        projectsH2.style.marginRight = "2.5em";
     } else {
         filters.style.display = "none";
         loginHref.style.display = "none";
-        projects.style.marginBottom = "4em";
+        projects.style.marginBottom = "4em";    
     }
 };
-
 
 function removeLocalStorage() {
     const logoutHref = document.querySelector("#logoutHref");
@@ -97,10 +98,18 @@ function removeLocalStorage() {
     logoutHref.addEventListener("click", function () {
         localStorage.removeItem("userId");
         localStorage.removeItem("token");
+        document.location.href="login.html";
 
     });
 };
+
+function loginDetection () {
+    if (userId === userId && token === token) {
+        editionMode(userId,token);
+    }
+};
+
 generateProjects(works);
-editionMode(userId,token);
+loginDetection();
 removeLocalStorage();
 

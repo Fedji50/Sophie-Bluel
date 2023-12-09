@@ -32,8 +32,12 @@
 	   15:05 : _ modifs .editionMode et .editionBtn et ajouts de la div "projects" et du bouton "modifyBtn" et des classes CSS.
 	   22:00 : _ màj works.js : Récuperation du userId et du token pour resté identifié, récupération des différents éléments du DOM (editionMode, loginHref, logoutHref,modifyBtn, filters, projects)
 		     et création de la fonction editionMode pour faire apparaitre et disparaitre des éléments quand on est connecté avec une condition if/else.
-		   _ Création fonction removeLocalStorage pour vider le localStorage au clic sur lien logoutHref. 
+		   _ Création fonction removeLocalStorage pour vider le localStorage au clic sur lien logoutHref et redirection sur la page login.html. 
 
 07/12/2023 14h00 : _ Modification works.js avec la fonction editionMode.
-	   
+
+09/12/2023 23:00 : _ Réorganisation du fichier works.js avec placement des fonctions à la fin pour plus de lisibilité et compréhension.
+		   _ Modification fonction editionMode avec rajout de marginRight sur H2 de div=Projects.
+		   _ Création de la fonction loginDetection qui permet de passer en mode administrateur (activation de la fonction editionMode) si détection de userId et token dans le LocalStorage.
+		   _ 	   
 		     
