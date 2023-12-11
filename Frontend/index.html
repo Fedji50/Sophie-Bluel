@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="https://kit.fontawesome.com/28e03385b0.js" crossorigin="anonymous"></script>
 	<script type="module" src="works.js" defer></script>
+	<script type="module" src="add.js" defer></script>
 
 </head>
 <body>
@@ -44,7 +45,32 @@
 		</section>
 		<section id="portfolio">
 			<div class="projects"><h2>Mes Projets</h2>
-				<button class="modifyBtn"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
+				<button class="modifyBtn" id="modifyBtn"><i class="fa-regular fa-pen-to-square"></i>
+					<a href="#modal">modifier</a></button>
+					<aside id="modal" class="modal" aria-hidden="true" aria-labelledby="modal-heading" role="dialog" style="display: none;">
+						<div class="modal-wrapper">
+							<i class="fa-solid fa-xmark"></i>
+							<h1 id="modal-heading">Galerie photo</h1>
+							<p>Well I'da done better, but it's plum hard pleading a case while awaiting trial for that there incompetence. No, I'm Santa Claus! Hey, whatcha watching? When the lights go out, it's nobody's business what goes on between two consenting adults.</p>
+							<p>Our love isn't any different from yours, except it's hotter, because I'm involved. I don't 'need' to drink. I can quit anytime I want! <strong> Ah, yes!</strong> <em> John Quincy Adding Machine.</em> He struck a chord with the voters when he pledged not to go on a killing spree.</p>
+							<h2>Bender, I didn't know you liked cooking. That's so cute.</h2>
+							<p>I never loved you. OK, this has gotta stop. I'm going to remind Fry of his humanity the way only a woman can. But I've never been to the moon! It's toe-tappingly tragic! Bender, this is Fry's decision… and he made it wrong. So it's time for us to interfere in his life.</p>
+							<ol>
+
+								<li>Doomsday device? Ah, now the ball's in Farnsworth's court!</li><li>There's no part of that sentence I didn't like!</li><li>Who am I making this out to?</li>
+
+							</ol>
+
+							<h3>You don't know how to do any of those.</h3>
+							<p>Ok, we'll go deliver this crate like professionals, and then we'll go ride the bumper cars. Well I'da done better, but it's plum hard pleading a case while awaiting trial for that there incompetence. Then throw her in the laundry room, which will hereafter be referred to as "the brig".</p>
+							<ul>
+
+								<li>And then the battle's not so bad?</li><li>Hey, guess what you're accessories to.</li><li>Yes! In your face, Gandhi!</li>
+
+							</ul>
+							<button id="addPhoto" class="addPhoto">Ajouter une photo</button>
+						</div>
+					</aside>
 			</div>
 			<div class="filters">	
 				<button class="categories" id="all">Tous</button>
@@ -79,6 +105,6 @@
 		</nav>
 	</footer>
 </div>
-
+<script src="add.js"></script>
 </body>
 </html>

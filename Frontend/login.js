@@ -73,7 +73,8 @@ function saveLoginUser() {
             };
             setCookie(userName, userId);
             setCookie(keyName, token);
-            
+            //Vérification de la combinaison email - mot de passe:
+            errorEmailPassword();
             } 
         catch (error) {
             console.log("Erreur : " + error)
@@ -87,7 +88,7 @@ function saveLoginUser() {
 // validationEmail();
 // Sauvergarde des informations de connexion:
 saveLoginUser();
-//Vérification de la combinaison email - mot de passe:
-errorEmailPassword();
+
+// errorEmailPassword();
 
 

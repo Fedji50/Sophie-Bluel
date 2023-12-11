@@ -39,5 +39,7 @@
 09/12/2023 23:00 : _ Réorganisation du fichier works.js avec placement des fonctions à la fin pour plus de lisibilité et compréhension.
 		   _ Modification fonction editionMode avec rajout de marginRight sur H2 de div=Projects.
 		   _ Création de la fonction loginDetection qui permet de passer en mode administrateur (activation de la fonction editionMode) si détection de userId et token dans le LocalStorage.
-		   _ 	   
+		   
+11/12/2023 21:40 : _ Création fichier add.js pour affichage modale avec fonctions openModal et closeModal
+		   _ Modif index.html et style.css pour la création de la modale permettant d'ajouter des projets  	   
 		     
