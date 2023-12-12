@@ -197,20 +197,39 @@ a:visited {
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
-	width: 650px;
-	height: 700px;
+	width: 630px;
+	height: 688px;
 	max-width: calc(100vw - 20px);
 	max-height: calc(100vh - 20px);
 	padding: 20px;
 	background-color: #fff;
 	border-radius: 10px;
 }
-.modal-wrapper.fa-xmark {
-	position: absolute;
-	top: 10px;
-	right: 10px;
+.modal-header {
+	display: flex;
+	align-self: center;
+	margin-bottom: 2.5em;
+	margin-top: 1em;
+}
+.modal-header h1 {
+	font-family: 'Work Sans';
+	font-size: 26px;
+	font-weight: 500;
+	color: #000000;	
+}
+.icon-close {
 	cursor: pointer;
-
+	align-self: flex-end;
+	margin-top: 0.5em;
+}
+.fa-xmark {
+	size: large;
+}
+hr {
+	color: #b3b3b3;
+	width: 420px;
+	border: 1px solid #b3b3b3;
+	align-self: center;
 }
 .addPhoto {
 	font-family: 'Syne';
@@ -219,6 +238,7 @@ a:visited {
 	background-color: #1D6154;
 	margin : 2em auto ;
 	width: 250px;
+	height: 36px;
 	text-align: center;
 	border-radius: 60px;
 	cursor: pointer;

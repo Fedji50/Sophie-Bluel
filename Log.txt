@@ -41,5 +41,7 @@
 		   _ Création de la fonction loginDetection qui permet de passer en mode administrateur (activation de la fonction editionMode) si détection de userId et token dans le LocalStorage.
 		   
 11/12/2023 21:40 : _ Création fichier add.js pour affichage modale avec fonctions openModal et closeModal
-		   _ Modif index.html et style.css pour la création de la modale permettant d'ajouter des projets  	   
+		   _ Modif index.html et style.css pour la création de la modale permettant d'ajouter des projets
+12/12/2023 15:50 : _ Modifs index.html => rajout des <div class="modal-header">, <div class="icon-close"> et <div class="works">. Séparation <hr> 
+		     Modifs style.css => rajout du style pour la modale. 	   
 		     
