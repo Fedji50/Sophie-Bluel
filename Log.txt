@@ -46,5 +46,7 @@
 12/12/2023 15:50 : _ Modifs index.html => rajout des <div class="modal-header">, <div class="icon-close"> et <div class="works">. Séparation <hr> 
 		     Modifs style.css => rajout du style pour la modale.
 
-13/12/2023 21:45 : _ Modif index.html => suppression lorem ipsum dans div "works" et affichage des photots des projets dans la modale par JS avec fonction generatePhotosModal dans add.js   
+13/12/2023 21:45 : _ Modif index.html => suppression lorem ipsum dans div "works" et affichage des photots des projets dans la modale par JS avec fonction generatePhotosModal dans add.js
+
+14/12/2023 22h05 : _ Modif style.css et add.js => ajout de l'icône de suppression de travaux par JS.   
 		     

@@ -222,9 +222,6 @@ a:visited {
 	align-self: flex-end;
 	margin-top: 0.5em;
 }
-.fa-xmark {
-	size: large;
-}
 .works{
 	display: grid;
 	grid-template-columns: 76.86px 76.86px 76.86px 76.86px 76.86px;
@@ -232,6 +229,24 @@ a:visited {
   	align-self: center;
 	justify-content: space-between;
 	row-gap: 2em;
+}
+.photo {
+	/* display: flex; */
+	/* flex-direction: column-reverse; */
+}
+.deletePhoto {
+	background-color: black;
+	width: 17px;
+	height: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*position: relative;
+	left: 52px;
+	top: 25px;*/
+}
+.fa-trash-can {
+	color: #fff;
 }
 hr {
 	color: #b3b3b3;

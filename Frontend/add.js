@@ -45,7 +45,8 @@ function generatePhotosModal (works) {
         // console.log(demo);
 
         const figureElement = document.createElement("figure");
-        figureElement.dataset.id_work = demo.id;
+        figureElement.classList.add("photo");
+        // figureElement.dataset.id_work = demo.id;
         const imageElement = document.createElement("img");
         const modalContainer = document.getElementById("works");
         //Insertion des balises dans le DOM de la modale
@@ -55,13 +56,14 @@ function generatePhotosModal (works) {
         modalContainer.appendChild(figureElement);
         imageElement.style.width = "76.86px";
         imageElement.style.height = "102.57px";
-        figureElement.style.width = "76.86px";
-        figureElement.style.height = "102.57px";
+        // figureElement.style.width = "76.86px";
+        // figureElement.style.height = "102.57px";
 
         // ajout de l'icone de suppression de projet:
-    const iconElement = document.createElement("div");
-    iconElement.classList.add("deletePhoto");
-    iconElement.innerHTML='<i class="fa-solid fa-trash-can"></i>';
+        const iconElement = document.createElement("div");
+        iconElement.classList.add("deletePhoto");
+        iconElement.innerHTML='<i class="fa-solid fa-trash-can"></i>';
+        figureElement.appendChild(iconElement);
     }
 }
 
