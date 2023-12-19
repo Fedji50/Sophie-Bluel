@@ -1,10 +1,10 @@
-
 function validationEmail() {
     //Permet de vérifier si l'email est au format souhaité qd je passe au champ du mot de passe:
     let emailField = document.getElementById("emailAddress");
-    let emailTag = document.getElementById("emailAddress").value;
-    let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+");
+    let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+[.]+[a-z0-9._-]+");
+
     emailField.addEventListener("focusout", function () { 
+        let emailTag = emailField.value;
         if(emailRegExp.test(emailTag) || emailTag === "") {
             console.log("L'email est valide");
         } else {
@@ -74,7 +74,8 @@ function saveLoginUser() {
             setCookie(userName, userId);
             setCookie(keyName, token);
             //Vérification de la combinaison email - mot de passe:
-            errorEmailPassword();
+            // errorEmailPassword();
+            document.location.href="index.html";
             } 
         catch (error) {
             console.log("Erreur : " + error)
@@ -85,7 +86,7 @@ function saveLoginUser() {
 
 )};
 // Vérification du mail: et du mot de passe:
-// validationEmail();
+validationEmail();
 // Sauvergarde des informations de connexion:
 saveLoginUser();
 

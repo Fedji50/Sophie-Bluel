@@ -75,7 +75,7 @@ function editionMode (userId, token) {
     const editionMode = document.querySelector(".editionMode");
     const loginHref = document.querySelector("#loginHref");
     const logoutHref = document.querySelector("#logoutHref");
-    const modifyBtn = document.querySelector(".modifyBtn");
+    const modifyBtn = document.querySelector(".js-modal");
     const filters = document.querySelector(".filters");
     const projects = document.querySelector(".projects");
     const projectsH2 = projects.querySelector("h2"); 
