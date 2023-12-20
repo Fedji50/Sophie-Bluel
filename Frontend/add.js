@@ -1,25 +1,5 @@
 let modal = null;
 
-/*const openModal = function (e) {
-    e.preventDefault();
-    console.log("e.target % o", e);
-
-    let target = null;
-    // debugger;
-    if (e.target.nodeName === "A") {
-        e.target.getAttribute("href");
-    } if (e.target.parentElement.id === "modifyBtn") {
-        e.target.querySelector(".fa-regular fa-pen-to-square");
-    }
-    target.style.display= null;
-    target.removeAttribute("aria-hidden");
-    target.setAttribute("aria-modal", "true");
-    modal = target;
-    modal.addEventListener("click", closeModal);
-    modal.querySelector(".fa-xmark").addEventListener("click", closeModal);
-    modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
-}*/
-
 const openModal = function (e) {
     e.preventDefault();
     const target = document.querySelector(e.target.getAttribute("href"))
@@ -48,7 +28,6 @@ const stopPropagation = function (e) {
     e.stopPropagation();
 };
 
-// const modifyBtn = document.getElementById("modifyBtn");
 const modifyBtn = document.querySelector(".js-modal");
 modifyBtn.addEventListener("click", openModal);
 
@@ -86,13 +65,17 @@ function generatePhotosModal (works) {
         iconElement.dataset.id_work = demo.id;
 
         //****** Suppression d'une photo et d'un projet ******/
-        let workId = demo.object;
         const token = localStorage.getItem("token");
-            iconElement.addEventListener("click", function () {
-                console.log(works[0]);
+            iconElement.addEventListener("click", (event) => {
+                event.preventDefault();
+                // let iconElement = figureElement; /* utile */
+                let iconElement = demo;
+                let id = demo.id; /* utile */ 
+                // console.log(works[0]);
                 console.log(iconElement);
                 
-                /*fetch (`http://localhost:5678/api/works/{workId}`,{
+                // Changer la dernière partie de l'url du fetch 
+                fetch (`http://localhost:5678/api/works/§{Id}`,{
                     method : "DELETE",
                     headers: {
                         "Authorization": `Bearer ${token}`
@@ -105,7 +88,7 @@ function generatePhotosModal (works) {
                     } else {
                     console.log("Erreur lors de la suppression de l'élément")
                     }})
-                .catch(error => console.error("Error:", error));*/
+                .catch(error => console.error("Error:", error));
                 }
             );
 
@@ -113,8 +96,7 @@ function generatePhotosModal (works) {
 }
 
 function deleteWorks () {
-    // const deletePhotoBtns = document.querySelectorAll(".deletePhoto");
-
+    
     for (let i = 0 ; i < works.length ; i++){
         const demo = works[i];
         // console.log(demo);

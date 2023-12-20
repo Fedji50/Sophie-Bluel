@@ -52,4 +52,6 @@
 
 19/12/2023 19h10 : _ Modif login.js => correction function validationEmail()
 		   _ Modif add.js => maj function generatePhotosModal et abandon function deleteWorks ()  
+
+20/12/2023 22h00 : _ Màj add.js => suppression éléments mis en commentaires
 		     
