@@ -54,4 +54,7 @@
 		   _ Modif add.js => maj function generatePhotosModal et abandon function deleteWorks ()  
 
 20/12/2023 22h00 : _ Màj add.js => suppression éléments mis en commentaires
+
+21/12/2023 19h30 : _ màj add.js => remaniements function generatePhotosModal (works) et function deleteWorks ()(non valide)
+		   _ generatePhotosModal => supprime les projets de la page et de la database ms ne met pas à jour la page sans actualiser manuellement.
 		     
