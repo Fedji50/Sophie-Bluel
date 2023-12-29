@@ -57,4 +57,8 @@
 
 21/12/2023 19h30 : _ màj add.js => remaniements function generatePhotosModal (works) et function deleteWorks ()(non valide)
 		   _ generatePhotosModal => supprime les projets de la page et de la database ms ne met pas à jour la page sans actualiser manuellement.
+
+29/12/2023 11h10 : _ génération d'un nouveau token par swagger car problème avec le 1er ( reponse 401 => pb authentification)
+		   _ Modif add.js => changement condition test après demande de suppression (reponse.status === 200 || reponse.status === 204),
+		     ajout de constantes pour selectionner et supprimer les projets
 		     

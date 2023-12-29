@@ -32,49 +32,82 @@ const modifyBtn = document.querySelector(".js-modal");
 modifyBtn.addEventListener("click", openModal);
 
 
+// const reponse = await fetch("http://localhost:5678/api/works");
+// const works = await reponse.json();
+const modalContainer = document.getElementById("works");
+// console.log(works);
+
 //Récupération des fichiers depuis l'api SWAGGER
-const reponse = await fetch("http://localhost:5678/api/works");
-const works = await reponse.json();
-console.log(works);
 
+function deleteWorks () {
+    
+    //****** Suppression d'une photo et d'un projet ******/
+    const token = localStorage.getItem("token");
+    const iconElement = document.querySelector(".deletePhoto");
+    iconElement.addEventListener("click", (event) => {
+        event.preventDefault();
+        console.log(iconElement);
+         
+        //  Changer la dernière partie de l'url du fetch 
+        fetch (`http://localhost:5678/api/works/${id}`,{
+             method : "DELETE",
+             headers: {
+                 "Authorization": `Bearer ${token}`
+             }}
+        )
+        .then(response => {
+        if (response.status === 200) {
+             let modalPhoto = document.querySelector("photo");
+             modalPhoto.remove()
+             console.log("La suppression a réussi")
+             } else {
+             console.log("Erreur lors de la suppression de l'élément")
+             }})
+        .catch(error => console.error("Error:", error));
+        }
+    );
 
-function generatePhotosModal (works) {
+};
+
+async function generatePhotosModal () {
+
+    const reponse = await fetch("http://localhost:5678/api/works");
+    const works = await reponse.json();
+
     // boucle qui parcoure le tableau works afin d'afficher toutes les photos
     for (let i = 0 ; i < works.length ; i++){
         //Création des différentes balises de la galerie de travaux sur la modale
         const demo = works[i];
-        console.log(demo);
+        // console.log(demo);
 
         const figureElement = document.createElement("figure");
         figureElement.classList.add("photo");
         figureElement.dataset.id_work = demo.id;
         const imageElement = document.createElement("img");
-        const modalContainer = document.getElementById("works");
+        // const modalContainer = document.getElementById("works");
+
         //Insertion des balises dans le DOM de la modale
         imageElement.src = demo.imageUrl;
         figureElement.appendChild(imageElement);
-        console.log(figureElement);
         modalContainer.appendChild(figureElement);
-        imageElement.style.width = "76.86px";
-        imageElement.style.height = "102.57px";
-        
+        // console.log(figureElement);
+
         // ajout de l'icone de suppression de projet:
         const iconElement = document.createElement("div");
         iconElement.classList.add("deletePhoto");
         iconElement.innerHTML='<i class="fa-solid fa-trash-can"></i>';
-        figureElement.appendChild(iconElement);
         iconElement.dataset.id_work = demo.id;
+        figureElement.appendChild(iconElement);
 
         
-        
         //****** Suppression d'une photo et d'un projet ******/
-        const token = localStorage.getItem("token");
+
             iconElement.addEventListener("click", (event) => {
                 event.preventDefault();
-                
+                const token = localStorage.getItem("token");
                 let iconElement = demo;
-                let id = demo.id; /* utile */ 
-                // console.log(works[0]);
+                let id = demo.id; /* utile */
+                console.log("token:",token);
                 console.log(iconElement);
                 
                 // Changer la dernière partie de l'url du fetch 
@@ -85,8 +118,12 @@ function generatePhotosModal (works) {
                     }}
                 )
                 .then(response => {
-                if (response.status === 200) {
-                    generatePhotosModal(works)
+                if (response.status === 200 || response.status === 204) {
+                    let gallery = document.getElementById("gallery");
+                    let galleryDeletedFigure = gallery.querySelector(`[data-id_work="${id}"]`);
+                    let modalDeletedFigure = modalContainer.querySelector(`[data-id_work="${id}"]`);
+                    galleryDeletedFigure.remove()
+                    modalDeletedFigure.remove()
                     console.log("La suppression a réussi")
                     } else {
                     console.log("Erreur lors de la suppression de l'élément")
@@ -98,39 +135,4 @@ function generatePhotosModal (works) {
     }
 }
 
-function deleteWorks () {
-    
-     //****** Suppression d'une photo et d'un projet ******/
-     const token = localStorage.getItem("token");
-     const iconElement = document.querySelector(".deletePhoto");
-     iconElement.addEventListener("click", (event) => {
-         event.preventDefault();
-        //  let iconElement = figureElement; /* utile */
-          let iconElement = demo;
-         //  let id = demo.id; /* utile */ 
-         //  let id = iconElement;
-         // console.log(works[0]);
-         console.log(iconElement);
-         
-        //  Changer la dernière partie de l'url du fetch 
-         fetch (`http://localhost:5678/api/works/{id}`,{
-             method : "DELETE",
-             headers: {
-                 "Authorization": `Bearer ${token}`
-             }}
-         )
-         .then(response => {
-         if (response.status === 200) {
-             generatePhotosModal(works)
-             console.log("La suppression a réussi")
-             } else {
-             console.log("Erreur lors de la suppression de l'élément")
-             }})
-         .catch(error => console.error("Error:", error));
-         }
-     );
-
-};
-
-generatePhotosModal(works);
-// deleteWorks();
+generatePhotosModal();

@@ -240,6 +240,10 @@ a:visited {
 	justify-content: space-between;
 	row-gap: 2em;
 }
+.works img {
+	width: 76.86px;
+	height: 102.57px;
+}
 .photo {
 	width: 76.86px;
 	height: 102.57px;
