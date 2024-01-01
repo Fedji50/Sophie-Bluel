@@ -10,6 +10,8 @@ const openModal = function (e) {
     modal.addEventListener("click", closeModal);
     modal.querySelector(".fa-xmark").addEventListener("click", closeModal);
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
+    modal.querySelector("#addProjects").addEventListener("click",  stopPropagation);
+    // modal.querySelector("#close").addEventListener("click",  closeModal);
 }
 
 const closeModal = function (e) {
@@ -21,6 +23,8 @@ const closeModal = function (e) {
     modal.removeEventListener("click", closeModal);
     modal.querySelector(".fa-xmark").removeEventListener("click", closeModal);
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
+    modal.querySelector("#addProjects").removeEventListener("click",  stopPropagation)
+    // modal.querySelector("#close").removeEventListener("click",  closeModal);
     modal = null;
 }
 
@@ -32,42 +36,9 @@ const modifyBtn = document.querySelector(".js-modal");
 modifyBtn.addEventListener("click", openModal);
 
 
-// const reponse = await fetch("http://localhost:5678/api/works");
-// const works = await reponse.json();
 const modalContainer = document.getElementById("works");
-// console.log(works);
 
 //Récupération des fichiers depuis l'api SWAGGER
-
-function deleteWorks () {
-    
-    //****** Suppression d'une photo et d'un projet ******/
-    const token = localStorage.getItem("token");
-    const iconElement = document.querySelector(".deletePhoto");
-    iconElement.addEventListener("click", (event) => {
-        event.preventDefault();
-        console.log(iconElement);
-         
-        //  Changer la dernière partie de l'url du fetch 
-        fetch (`http://localhost:5678/api/works/${id}`,{
-             method : "DELETE",
-             headers: {
-                 "Authorization": `Bearer ${token}`
-             }}
-        )
-        .then(response => {
-        if (response.status === 200) {
-             let modalPhoto = document.querySelector("photo");
-             modalPhoto.remove()
-             console.log("La suppression a réussi")
-             } else {
-             console.log("Erreur lors de la suppression de l'élément")
-             }})
-        .catch(error => console.error("Error:", error));
-        }
-    );
-
-};
 
 async function generatePhotosModal () {
 
@@ -134,5 +105,27 @@ async function generatePhotosModal () {
         
     }
 }
+
+
+const addPhotoBtn = document.getElementById("addPhoto");
+const deleteProjectsModal = document.getElementById("deleteProjects");
+const addProjectsModal = document.getElementById("addProjects");
+const returnBtn = document.querySelector(".return");
+
+addPhotoBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    deleteProjectsModal.style.display = "none"
+    addProjectsModal.style.display = "flex"
+});
+
+returnBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    deleteProjectsModal.style.display = "flex"
+    addProjectsModal.style.display = "none"
+})
+    
+
+
+
 
 generatePhotosModal();

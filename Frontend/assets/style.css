@@ -164,24 +164,6 @@ a:visited {
 	margin-bottom: 1em;
 	margin-left: 2.5em;
 }
-/*.modifyBtn{
-	color: rgb(0, 0, 0);
-	border: none;
-	background-color: rgb(255, 255, 255);
-	font-family: 'Work Sans';
-}
-.modifyBtn:hover{
-	color: rgb(0, 0, 0);
-	border: none;
-	background-color: rgb(255, 255, 255);
-	font-family: 'Work Sans';
-	cursor: pointer;
-}
-.modifyBtn i {
-	margin-left: 1em;
-	margin-bottom: 2em;
-	margin-right: 1em;
-}*/
 .js-modal {
     color: black;
 	font-family: 'Work Sans';
@@ -271,6 +253,32 @@ hr {
 	margin-top: 5em;
 }
 .addPhoto {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 250px;
+	height: 36px;
+	text-align: center;
+	border-radius: 60px;
+	cursor: pointer;
+}
+.icons {
+	display: flex;
+	justify-content: space-between;
+}
+.return {
+	cursor: pointer;
+	width: 21px;
+	height: 21px;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+.icon-close {
+	padding-right: 10px;
+}
+.validation {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;

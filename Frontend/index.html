@@ -20,6 +20,7 @@
 	</div>
 <div class="main-container">
 	<header>
+		
 		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 		<nav>
 			<ul>
@@ -50,17 +51,35 @@
 					modifier
 				</a>
 					<aside id="modal" class="modal" aria-hidden="true" aria-labelledby="modal-heading" role="dialog" style="display: none;">
-						<div class="modal-wrapper js-modal-stop">
-							<div class="icon-close">
-								<i class="fa-solid fa-xmark fa-lg"></i>
+						<div class="modal-wrapper js-modal-stop" id="deleteProjects" style=" display: flex;">
+								<div class="icon-close">
+									<i class="fa-solid fa-xmark fa-lg"></i>
+								</div>
+								<div class="modal-header">
+									<h1 id="modal-heading">Galerie photo</h1>
+								</div>
+								<div class="works" id="works">
+								</div>
+								<hr>
+								<button id="addPhoto" class="addPhoto">Ajouter une photo</button>
+						</div>
+						<div class="modal-wrapper js-modal-stop" id="addProjects" style="display: none;">
+							<div class="icons">
+								<div class="return">
+									<i class="fa-solid fa-arrow-left fa-xl"></i>
+								</div>
+								<div class="icon-close">
+									<i class="fa-solid fa-xmark fa-lg"></i>
+								</div>
 							</div>
 							<div class="modal-header">
-								<h1 id="modal-heading">Galerie photo</h1>
+								<h1>Ajout photo</h1>
 							</div>
-							<div class="works" id="works">
+							<div>
+
 							</div>
 							<hr>
-							<button id="addPhoto" class="addPhoto">Ajouter une photo</button>
+							<button id="validation" class="validation">Valider</button>
 						</div>
 					</aside>
 			</div>
