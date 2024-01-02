@@ -62,8 +62,11 @@
 		   _ Modif add.js => changement condition test après demande de suppression (reponse.status === 200 || reponse.status === 204),
 		     ajout de constantes pour selectionner et supprimer les projets
 
-01/12/2023 18h25 : _ Màj index.html => intégration div"addProjects" à la modale
+01/01/2024 18h25 : _ Màj index.html => intégration div"addProjects" à la modale
 		   _ Màj add.js => intégration "#addProjects" à la fonction openModal et closeModal, et faire apparaître la page "addProjects" au clic sur le bouton "ajouter photo"
 		     et retour sur la page "deleteProjects" en cliquant sur la flèche "return".
 		   _ Màj style.css => mise en plca du style avec les classes .addPhoto, .icons, .return, .icon-close, .validation
+
+02/01/2024 22h15 : _ Màj index.html => mise en place formulaire (section "addForm"),
+		   _ Màj style.css => mise en forme style formulaire.
 		     
