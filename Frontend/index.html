@@ -72,32 +72,27 @@
 									<i id="close" class="fa-solid fa-xmark fa-lg"></i>
 								</div>
 							</div>
-						<section class="addForm">
+						<div class="addForm">
 							<div class="modal-header">
 								<h1>Ajout photo</h1>
 							</div>
 							<form action="/traitement" method="post" id="addProjectForm">
 								<div class="picture">
-									<label for="addPhoto">+ Ajouter photo</label><br/>
-									<input type="image"
-											id="image"
-											name="image"/></div>
-								<br/>
+									<i class="fa-regular fa-image fa-5x"></i>
+									<label for="file"><span class="file-upload">+ Ajouter photo</span>
+									<input type="file"
+											id="file"
+											name="file"/></label><br/>
+									<p>jpg, png : 4mo max</p>
+									
+								</div>
+									<br/>
 								<label for="title">Titre</label><br/>
 								<input type="text" 
 										id="title" 
 										name="title"/><br/>
-								<!-- <label for="cat-select" class="cat-label">Categories</label><br/>
-								<select name="categories" id="cat-select">
-									<option value="" selected disabled hidden></option>
-									<option value="1">Objets</option>
-									<option value="2">Appartements</option>
-									<option value="3">Hotels & restaurants</option>
-								</select> -->
 								<div class="cat-select-group">
-									<label class="cat-select" for="select" >
-										Categories
-									</label>
+									<label class="cat-select-label" for="select" >Categories</label>
 									<select class="cat-select" id="cat-select" name="categories">
 									  <option value="" selected disabled hidden></option>
 									  <option value="1">Objets</option>
@@ -106,9 +101,9 @@
 									</select>
 								  </div>
 								<hr>
-								<input type="submit" value="Valider" id="validation"/><br/>
+								<input type="submit" value="Valider" id="validation"/>
 							</form>
-						</section>
+						</div>
 						</div>
 					</aside>
 			</div>

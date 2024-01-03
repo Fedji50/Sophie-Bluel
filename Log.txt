@@ -67,6 +67,11 @@
 		     et retour sur la page "deleteProjects" en cliquant sur la flèche "return".
 		   _ Màj style.css => mise en plca du style avec les classes .addPhoto, .icons, .return, .icon-close, .validation
 
-02/01/2024 22h15 : _ Màj index.html => mise en place formulaire (section "addForm"),
-		   _ Màj style.css => mise en forme style formulaire.
+02/01/2024 22h15 : _ Màj index.html => mise en place formulaire (div "addForm", "picture")
+		   _ Màj style.css => mise en forme style formulaire (".picture", ".addForm")
+
+03/01/2024 16h40 : _ Màj index.html => mise en place formulaire (div "addForm", "picture", <i>, <label> & <input>, <p>, ),
+		   _ Màj style.css => mise en forme style formulaire (".picture", ".addForm", ".addForm label", "#addProjectForm", ".fa-image", ".picture label", "input[type="file"]", ".file-upload",
+		     ".picture p", "#title", ".cat-select-group", ".cat-select", ".addForm hr")
+
 		     
