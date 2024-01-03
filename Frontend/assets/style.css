@@ -264,6 +264,7 @@ a:visited {
 	height: 36px;
 	text-align: center;
 	border-radius: 60px;
+	border: none;
 	cursor: pointer;
 }
 #addProjects {
@@ -365,23 +366,16 @@ input[type="file"] {
 	align-self: center;
 	margin-top: 1em;
 }
-.validation {
-	font-family: 'Syne';
-	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 250px;
+#validation {
+	background-color: #a7a7a7;
 	height: 36px;
-	text-align: center;
-	border-radius: 60px;
+	width: 237px;
 	cursor: pointer;
 }
 .filters {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 10vh;
-	
 }
 .categories {
 	margin: 0.3em;
@@ -393,10 +387,6 @@ input[type="file"] {
 	font-weight: 700;
 	font-size: 15px;
 	color: #1D6154;
-}
-#validation {
-	height: 36px;
-	width: 237px;
 }
 .categories:hover {
 	color: white;
@@ -471,6 +461,7 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	border: none;
 }
 footer{
 	width: 1440px;

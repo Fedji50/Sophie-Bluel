@@ -82,9 +82,14 @@
 									<label for="file"><span class="file-upload">+ Ajouter photo</span>
 									<input type="file"
 											id="file"
-											name="file"/></label><br/>
+											name="file"
+											onchange="previewPicture(this)"
+											accept=".jpg, .png"
+											required/>
+									</label>
+									<br/>
 									<p>jpg, png : 4mo max</p>
-									
+									<img src="#" alt="" class="preview" id="preview" style="max-width: 130px; max-height: 169px;" >
 								</div>
 									<br/>
 								<label for="title">Titre</label><br/>
@@ -101,7 +106,7 @@
 									</select>
 								  </div>
 								<hr>
-								<input type="submit" value="Valider" id="validation"/>
+								<input type="submit" value="Valider" id="validation" disabled/>
 							</form>
 						</div>
 						</div>
