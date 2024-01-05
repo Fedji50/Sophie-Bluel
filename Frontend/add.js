@@ -11,10 +11,11 @@ const openModal = function (e) {
     modal.querySelector(".fa-xmark").addEventListener("click", closeModal);
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
     modal.querySelector("#addProjects").addEventListener("click",  stopPropagation);
-    // modal.querySelector("#close").addEventListener("click",  closeModal);
+    modal.querySelector("#close").addEventListener("click",  closeModal);
 }
 
 const closeModal = function (e) {
+    // console.log("modal:%o",modal)
     if (modal === null) return
     e.preventDefault();
     modal.style.display= "none";
@@ -24,7 +25,7 @@ const closeModal = function (e) {
     modal.querySelector(".fa-xmark").removeEventListener("click", closeModal);
     modal.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
     modal.querySelector("#addProjects").removeEventListener("click",  stopPropagation)
-    // modal.querySelector("#close").removeEventListener("click",  closeModal);
+    modal.querySelector("#close").removeEventListener("click",  closeModal);
     modal = null;
 }
 
@@ -106,7 +107,7 @@ async function generatePhotosModal () {
     }
 }
 
-
+// Récupération des constantes pour afficher la page d'ajout de projet et masquer celle suppression de projet:
 const addPhotoBtn = document.getElementById("addPhoto");
 const deleteProjectsModal = document.getElementById("deleteProjects");
 const addProjectsModal = document.getElementById("addProjects");
@@ -123,9 +124,32 @@ returnBtn.addEventListener("click", (event) => {
     deleteProjectsModal.style.display = "flex"
     addProjectsModal.style.display = "none"
 })
-    
+ 
+// Récupération de l'image que l'on veut prévisualiser et de celle que l'on upload:
+// const image = document.getElementById("preview");
+// const file = document.getElementById("file").files;
 
+function previewfile () {
+    let image = document.getElementById("preview");
+    let file = input.files;
 
+    if (file.length > 0) {
+        
+        let FileReader = new FileReader();
+
+        FileReader.onload = function (event) {
+            image.setAttribute("src", event.target.result);
+        };
+
+        FileReader.readAsDataURL(file[0]);
+    } 
+};
+
+// file.addEventListener("input", (event) => {
+//     event.preventDefault();
+//     console.log(file.value);
+//     image.appendChild = file.value;
+// })
 
 
 generatePhotosModal();

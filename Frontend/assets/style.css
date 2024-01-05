@@ -341,6 +341,12 @@ input[type="file"] {
 	bottom: 1.5em;
 	opacity: 0.8;
 }
+.preview{
+	max-width: 130px;
+	min-height: 169px;
+	position: absolute;
+	z-index: 2;
+}
 #title {
 	height: 50px;
 	font-size: 1.2em;

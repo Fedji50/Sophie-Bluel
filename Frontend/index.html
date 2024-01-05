@@ -72,43 +72,43 @@
 									<i id="close" class="fa-solid fa-xmark fa-lg"></i>
 								</div>
 							</div>
-						<div class="addForm">
-							<div class="modal-header">
-								<h1>Ajout photo</h1>
-							</div>
-							<form action="/traitement" method="post" id="addProjectForm">
-								<div class="picture">
-									<i class="fa-regular fa-image fa-5x"></i>
-									<label for="file"><span class="file-upload">+ Ajouter photo</span>
-									<input type="file"
-											id="file"
-											name="file"
-											onchange="previewPicture(this)"
-											accept=".jpg, .png"
-											required/>
-									</label>
-									<br/>
-									<p>jpg, png : 4mo max</p>
-									<img src="#" alt="" class="preview" id="preview" style="max-width: 130px; max-height: 169px;" >
+							<div class="addForm">
+								<div class="modal-header">
+									<h1>Ajout photo</h1>
 								</div>
-									<br/>
-								<label for="title">Titre</label><br/>
-								<input type="text" 
-										id="title" 
-										name="title"/><br/>
-								<div class="cat-select-group">
-									<label class="cat-select-label" for="select" >Categories</label>
-									<select class="cat-select" id="cat-select" name="categories">
-									  <option value="" selected disabled hidden></option>
-									  <option value="1">Objets</option>
-									  <option value="2">Appartements</option>
-									  <option value="3">Hotels & restaurants</option>
-									</select>
-								  </div>
-								<hr>
-								<input type="submit" value="Valider" id="validation" disabled/>
-							</form>
-						</div>
+								<form action="/traitement" method="post" id="addProjectForm">
+									<div class="picture">
+										<i class="fa-regular fa-image fa-5x"></i>
+										<label for="file"><span class="file-upload">+ Ajouter photo</span>	
+											<input type="file"
+													id="file"
+													name="file"
+													onchange="previewfile(this)"
+													accept=".jpg, .png"
+													required/>
+										</label>
+										<br/>
+										<p>jpg, png : 4mo max</p>
+										<img alt="" class="preview" id="preview" >
+									</div>
+										<br/>
+									<label for="title">Titre</label><br/>
+									<input type="text" 
+											id="title" 
+											name="title"/><br/>
+									<div class="cat-select-group">
+										<label class="cat-select-label" for="select" >Categories</label>
+										<select class="cat-select" id="cat-select" name="categories">
+											<option value="" selected disabled hidden></option>
+											<option value="1">Objets</option>
+											<option value="2">Appartements</option>
+											<option value="3">Hotels & restaurants</option>
+										</select>
+									</div>
+									<hr>
+									<input type="submit" value="Valider" id="validation" disabled/>
+								</form>
+							</div>
 						</div>
 					</aside>
 			</div>

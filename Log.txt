@@ -74,4 +74,7 @@
 		   _ Màj style.css => mise en forme style formulaire (".picture", ".addForm", ".addForm label", "#addProjectForm", ".fa-image", ".picture label", "input[type="file"]", ".file-upload",
 		     ".picture p", "#title", ".cat-select-group", ".cat-select", ".addForm hr")
 
+05/01/2024 18h30 : _ Màj index.html => mise en place de la fonction previewfile(this) sur l'attribut onchange de l'élément input du formulaire d'ajout de projet.
+		   _ Màj add.js => => mise en place de la fonction previewfile.
+
 		     
