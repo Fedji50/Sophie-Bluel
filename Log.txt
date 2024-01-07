@@ -81,4 +81,6 @@
 		   _ Création preview.js pour la prévisualisation de l'image du formulaire d'ajout de projet et suppression dans add.js
 		   _ Modif style.css => modif .preview pour suppression bordure.
 
+	   21h50 : _ Màj add.js => mise en place condition pour remettre à zéero le formulaire qd on revient en arrière ou que l'on ferme la modale.
+
 		     

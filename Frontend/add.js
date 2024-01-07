@@ -112,44 +112,57 @@ const addPhotoBtn = document.getElementById("addPhoto");
 const deleteProjectsModal = document.getElementById("deleteProjects");
 const addProjectsModal = document.getElementById("addProjects");
 const returnBtn = document.querySelector(".return");
+const title = document.getElementById("title");
+const category = document.getElementById("cat-select");
+const validationBtn = document.getElementById("validation");
 
 addPhotoBtn.addEventListener("click", (event) => {
     event.preventDefault();
     deleteProjectsModal.style.display = "none"
     addProjectsModal.style.display = "flex"
+    title.value = "";
+    category.value = ""; 
+    validationBtn.style.backgroundColor = "#a7a7a7";
 });
 
 returnBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    deleteProjectsModal.style.display = "flex"
-    addProjectsModal.style.display = "none"
+    deleteProjectsModal.style.display = "flex";
+    addProjectsModal.style.display = "none";
+    title.value = "";
+    category.value = "";
+    validationBtn.style.backgroundColor = "#a7a7a7";
 })
- 
-// Récupération de l'image que l'on veut prévisualiser et de celle que l'on upload:
-// const image = document.getElementById("preview");
-// const file = document.getElementById("file").files;
 
-// function previewfile () {
-//     let image = document.getElementById("preview");
-//     let file = input.files;
 
-//     if (file.length > 0) {
-        
-//         let FileReader = new FileReader();
+// Récupération des constantes pour le formulaire :
+const imageUrl = document.getElementById("file");
 
-//         FileReader.onload = function (event) {
-//             image.setAttribute("src", event.target.result);
-//         };
+const file = imageUrl.files;
+const addProjectForm = document.getElementById("addProjectForm");
 
-//         FileReader.readAsDataURL(file[0]);
-//     } 
-// };
 
-// file.addEventListener("input", (event) => {
-//     event.preventDefault();
-//     console.log(file.value);
-//     image.appendChild = file.value;
-// })
+if (file.length > 0 && title.value !== "" && category.value !== "") {
+    validationBtn.removeAttribute("disabled");
+    validationBtn.style.backgroundColor = "#1D6154";
+};
+
+addProjectForm.addEventListener("submit", addNewProject);
+
+function addNewProject (event) {
+    
+    
+    
+    const userId = localStorage.getItem("userId");
+    const token = localStorage.getItem("token");
+    
+    // Création d'un objet formData:
+    const formData = new FormData ()
+
+    event.preventDefault();
+    console.log("Formulaire soumis")
+}
 
 
 generatePhotosModal();
+addNewProject();

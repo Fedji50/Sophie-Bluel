@@ -61,10 +61,8 @@ function saveLoginUser() {
             //Traitement de la reponse en chaîne JSON pr être stockée plus tard
             let userId = (dataId.userId);
             let userName = "userId";
-            console.log(userId);
             let token = (dataId.token);
             let keyName = "token";
-            console.log(token);
             //Stockage de l'Id et du token dans le localStorage et les cookies
             window.localStorage.setItem("userId", userId);
             window.localStorage.setItem("token", token);
