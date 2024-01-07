@@ -75,6 +75,10 @@
 		     ".picture p", "#title", ".cat-select-group", ".cat-select", ".addForm hr")
 
 05/01/2024 18h30 : _ Màj index.html => mise en place de la fonction previewfile(this) sur l'attribut onchange de l'élément input du formulaire d'ajout de projet.
-		   _ Màj add.js => => mise en place de la fonction previewfile.
+		   _ Màj add.js => mise en place de la fonction previewfile.
+
+07/01/2024 14h05 : _ Màj index.html => ajout du script repview.js pour la fonction previewfile au début des scripts dans la balise <head>
+		   _ Création preview.js pour la prévisualisation de l'image du formulaire d'ajout de projet et suppression dans add.js
+		   _ Modif style.css => modif .preview pour suppression bordure.
 
 		     

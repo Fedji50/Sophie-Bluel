@@ -129,21 +129,21 @@ returnBtn.addEventListener("click", (event) => {
 // const image = document.getElementById("preview");
 // const file = document.getElementById("file").files;
 
-function previewfile () {
-    let image = document.getElementById("preview");
-    let file = input.files;
+// function previewfile () {
+//     let image = document.getElementById("preview");
+//     let file = input.files;
 
-    if (file.length > 0) {
+//     if (file.length > 0) {
         
-        let FileReader = new FileReader();
+//         let FileReader = new FileReader();
 
-        FileReader.onload = function (event) {
-            image.setAttribute("src", event.target.result);
-        };
+//         FileReader.onload = function (event) {
+//             image.setAttribute("src", event.target.result);
+//         };
 
-        FileReader.readAsDataURL(file[0]);
-    } 
-};
+//         FileReader.readAsDataURL(file[0]);
+//     } 
+// };
 
 // file.addEventListener("input", (event) => {
 //     event.preventDefault();
