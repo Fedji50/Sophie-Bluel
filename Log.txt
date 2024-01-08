@@ -83,4 +83,8 @@
 
 	   21h50 : _ Màj add.js => mise en place condition pour remettre à zéero le formulaire qd on revient en arrière ou que l'on ferme la modale.
 
+09/01/2024 00h05 : _ Màj add.js => construction fonction "errormessageForm" pour afficher un message si erreur dans le formulaire, et construction fonction "addNewProject" qui
+		     récupère les données du formulaire pour les envoyer à l'API.
+		 
+
 		     

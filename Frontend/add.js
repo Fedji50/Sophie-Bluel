@@ -114,7 +114,7 @@ const addProjectsModal = document.getElementById("addProjects");
 const returnBtn = document.querySelector(".return");
 const title = document.getElementById("title");
 const category = document.getElementById("cat-select");
-const validationBtn = document.getElementById("validation");
+
 
 addPhotoBtn.addEventListener("click", (event) => {
     event.preventDefault();
@@ -122,7 +122,7 @@ addPhotoBtn.addEventListener("click", (event) => {
     addProjectsModal.style.display = "flex"
     title.value = "";
     category.value = ""; 
-    validationBtn.style.backgroundColor = "#a7a7a7";
+    // validationBtn.style.backgroundColor = "#a7a7a7";
 });
 
 returnBtn.addEventListener("click", (event) => {
@@ -131,38 +131,61 @@ returnBtn.addEventListener("click", (event) => {
     addProjectsModal.style.display = "none";
     title.value = "";
     category.value = "";
-    validationBtn.style.backgroundColor = "#a7a7a7";
+    // validationBtn.style.backgroundColor = "#a7a7a7";
 })
 
 
 // Récupération des constantes pour le formulaire :
-const imageUrl = document.getElementById("file");
-
-const file = imageUrl.files;
+const input = document.getElementById("file");
+const file = input.files;
 const addProjectForm = document.getElementById("addProjectForm");
+const validationBtn = document.getElementById("validation");
 
+// Ajout d'un écouteur d'évènement sur chaque chammp du formulaire:
+// input.addEventListener("input", updateValidationBtnColor);
+// title.addEventListener("input", updateValidationBtnColor);
+// category.addEventListener("input", updateValidationBtnColor);
 
-if (file.length > 0 && title.value !== "" && category.value !== "") {
-    validationBtn.removeAttribute("disabled");
-    validationBtn.style.backgroundColor = "#1D6154";
+// Fonction pour mettre à jour la couleur du bouton :
+// function updateValidationBtnColor () {
+//     if (file.length > 0 && title.value !== "" && category.value !== "") {
+//         validationBtn.removeAttribute("disabled");
+//         validationBtn.style.backgroundColor = "#1D6154";
+//     } else {
+//         validationBtn.setAttribute("disabled", true);
+//         validationBtn.style.backgroundColor = "#a7a7a7";
+//     }
+// }
+
+// Fontion pour afficher un message d'erreur si l'un des champs n'est pas correctement rempli
+// à la soumission du formulaire : 
+function errorMessageForm () {
+    if (file.length = 0 || title.value === "" || category.value === "") {
+        alert("L'un des champs du formulaire n'est pas rempli correctement.");
+        validationBtn.setAttribute("disabled");
+    }
 };
 
-addProjectForm.addEventListener("submit", addNewProject);
-
+// Fonction d'ajout de projet avec FormData: 
 function addNewProject (event) {
-    
-    
     
     const userId = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
     
-    // Création d'un objet formData:
-    const formData = new FormData ()
-
     event.preventDefault();
-    console.log("Formulaire soumis")
-}
+    console.log("Formulaire soumis");
 
+    // Création d'un objet formData:
+    
+    const formData = new FormData (addProjectForm);
+    const photoProject = formData.get("file");
+    const titleProject = formData.get("title");
+    const categoryProject = formData.get("cat-select");
+    console.log("Projet :", {photoProject, titleProject, categoryProject});
+
+
+};
+// Écouteur d'évènement à la soummision du formulaire:
+addProjectForm.addEventListener("submit", errorMessageForm, addNewProject);
 
 generatePhotosModal();
-addNewProject();
