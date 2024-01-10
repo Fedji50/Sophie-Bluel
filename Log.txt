@@ -85,6 +85,8 @@
 
 09/01/2024 00h05 : _ Màj add.js => construction fonction "errormessageForm" pour afficher un message si erreur dans le formulaire, et construction fonction "addNewProject" qui
 		     récupère les données du formulaire pour les envoyer à l'API.
+
+10/01/2024 15h50 : - Correction add.js => correction "errorMessageForm" pour se déclencher au clic du bouton validation et non à la soumission du formulaire.
 		 
 
 		     
