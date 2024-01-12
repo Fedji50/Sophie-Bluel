@@ -12,6 +12,10 @@ const openModal = function (e) {
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
     modal.querySelector("#addProjects").addEventListener("click",  stopPropagation);
     modal.querySelector("#close").addEventListener("click",  closeModal);
+    let deleteProjects = document.getElementById("deleteProjects");
+    deleteProjects.style.display = "flex";
+    let addProjects = document.getElementById("addProjects");
+    addProjects.style.display = "none";
 }
 
 const closeModal = function (e) {
@@ -112,8 +116,12 @@ const addPhotoBtn = document.getElementById("addPhoto");
 const deleteProjectsModal = document.getElementById("deleteProjects");
 const addProjectsModal = document.getElementById("addProjects");
 const returnBtn = document.querySelector(".return");
+const closeBtn = document.getElementById("close")
 const title = document.getElementById("title");
 const category = document.getElementById("category");
+const input = document.getElementById("file");
+let file = input.files;
+
 
 
 addPhotoBtn.addEventListener("click", (event) => {
@@ -134,16 +142,20 @@ returnBtn.addEventListener("click", (event) => {
     // validationBtn.style.backgroundColor = "#a7a7a7";
 })
 
+closeBtn.addEventListener ("click", (event) => {
+    event.preventDefault();
+    title.value = "";
+    category.value = "";
+})
 
 // Récupération des constantes pour le formulaire :
-const input = document.getElementById("file");
-const file = input.files;
+
 const addProjectForm = document.getElementById("addProjectForm");
 const validationBtn = document.getElementById("validation");
 
 // Fonction pour rendre fonctionnel le bouton de formulaire si les champs sont remplis:
 function enableValidationBtn () {
-    if (file.length > 0 && title.value !== 0 && category.value !== 0) {
+    if (file.length > 0 && title.value !== "" && category.value !== "") {
         validationBtn.removeAttribute("disabled");
     }
 };
@@ -172,21 +184,28 @@ function addNewProject (event) {
     const categoryProject = formData.get("category");
     console.log("Projet :", {photoProject, titleProject, categoryProject});
 
-    // fetch ("http://localhost:5678/api/works"), {
-    //     method : "post",
-    //     headers : {
-    //         "accept": "application/json",
-    //         "content-type" : "multipart/form-data",
-    //         "Authorization" : `Bearer ${token}`
-    //         },
-    //     body: formData
-        
-    // };
+    fetch ("http://localhost:5678/api/works", {
+        method : "post",
+        headers : {
+            "accept": "application/json",
+            "content-type" : "multipart/form-data",
+            "Authorization" : `Bearer ${token}`
+            },
+        body: formData
+      
+    })
+    .then (response => response.json ())
+    .then (result => {
+        console.log(result);
+    });
+    
+    
 
 };
 // Écouteur d'évènement à la soummision du formulaire:
 
 validationBtn.addEventListener("click", errorMessageForm);
+addProjectForm.addEventListener("input", enableValidationBtn);
 addProjectForm.addEventListener("submit", addNewProject);
        
        

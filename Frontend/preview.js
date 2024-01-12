@@ -1,5 +1,6 @@
 // Récupération de l'image que l'on veut prévisualiser et de celle que l'on upload:
 function previewfile () {
+    let addPhotoBtn = document.getElementById("addPhoto");
     let input = document.getElementById("file");
     let image = document.getElementById("preview");
     let addFileBtn = document.querySelector(".file-upload");
@@ -27,7 +28,7 @@ function previewfile () {
         icon.style.visibility = "hidden";
         note.style.visibility = "hidden";  
     };
-    // Si on revient sur la page de usppression de projet ou si on ferme la fenêtre,
+    // Si on revient sur la page de suppression de projet ou si on ferme la fenêtre,
     // on fait réappaître le contenu de <div class="picture"> pr ajouter une photo :
     returnBtn.addEventListener("click", function () {
         file.length = 0;
