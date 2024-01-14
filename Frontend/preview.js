@@ -1,7 +1,7 @@
 // Récupération de l'image que l'on veut prévisualiser et de celle que l'on upload:
 function previewfile () {
     let addPhotoBtn = document.getElementById("addPhoto");
-    let input = document.getElementById("file");
+    let input = document.getElementById("image");
     let image = document.getElementById("preview");
     let addFileBtn = document.querySelector(".file-upload");
     let file = input.files;

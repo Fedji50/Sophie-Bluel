@@ -119,7 +119,7 @@ const returnBtn = document.querySelector(".return");
 const closeBtn = document.getElementById("close")
 const title = document.getElementById("title");
 const category = document.getElementById("category");
-const input = document.getElementById("file");
+const input = document.getElementById("image");
 let file = input.files;
 
 
@@ -179,7 +179,7 @@ function addNewProject (event) {
     // Création d'un objet formData:
     
     const formData = new FormData (addProjectForm);
-    const photoProject = formData.get("file");
+    const photoProject = formData.get("image");
     const titleProject = formData.get("title");
     const categoryProject = formData.get("category");
     console.log("Projet :", {photoProject, titleProject, categoryProject});
@@ -187,14 +187,17 @@ function addNewProject (event) {
     fetch ("http://localhost:5678/api/works", {
         method : "post",
         headers : {
-            "accept": "application/json",
+            // "accept": "application/json",
             "content-type" : "multipart/form-data",
             "Authorization" : `Bearer ${token}`
             },
         body: formData
       
     })
-    .then (response => response.json ())
+    .then (response => {
+        console.log("Réponse du serveur:", response);
+        return response.json ()
+    })
     .then (result => {
         console.log(result);
     });
