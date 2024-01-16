@@ -151,38 +151,25 @@ closeBtn.addEventListener ("click", (event) => {
 // Récupération des constantes pour le formulaire :
 
 const addProjectForm = document.getElementById("addProjectForm");
-const validationBtn = document.getElementById("validation");
-
-// Fonction pour rendre fonctionnel le bouton de formulaire si les champs sont remplis:
-function enableValidationBtn () {
-    if (file.length > 0 && title.value !== "" && category.value !== "") {
-        validationBtn.removeAttribute("disabled");
-    }
-};
-// Fonction pour afficher un message d'erreur si l'un des champs n'est pas correctement rempli
-// à la soumission du formulaire : 
-function errorMessageForm () {
-    if (file.length === 0 || title.value === "" || category.value === "") {
-        alert("L'un des champs du formulaire n'est pas rempli correctement.");
-    }
-};
 
 // Fonction d'ajout de projet avec FormData: 
 function addNewProject (event) {
     
     const userId = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
-    
+    let fileBlob = file.slice(0,file.name, file.size, file.type);
+
     event.preventDefault();
     console.log("Formulaire soumis");
 
     // Création d'un objet formData:
     
     const formData = new FormData (addProjectForm);
-    const photoProject = formData.get("image");
+    const photoProject = formData.get(fileBlob);
     const titleProject = formData.get("title");
     const categoryProject = formData.get("category");
     console.log("Projet :", {photoProject, titleProject, categoryProject});
+    console.log(formData);
 
     fetch ("http://localhost:5678/api/works", {
         method : "post",
@@ -207,8 +194,6 @@ function addNewProject (event) {
 };
 // Écouteur d'évènement à la soummision du formulaire:
 
-validationBtn.addEventListener("click", errorMessageForm);
-addProjectForm.addEventListener("input", enableValidationBtn);
 addProjectForm.addEventListener("submit", addNewProject);
        
        

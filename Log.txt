@@ -92,6 +92,10 @@
 
 14/01/2024 19h00 : _ màj add.js et index.html => renommage de l'input de type "file" pour correspondre au nom dans l'API
 		   _ màj style.css => rectification des propriétés des classes une fois un projet intégré avec dans la "gallery", dans "works" et "preview".
+
+16/01/2024 16h50 : _ màj add.js => suppression de la fonction "enableValidationBtn" et création du fichier validationForm.js avec dedans la fonction "errorMessageForm"
+		   _ màj index.html => ajout de l'attribut "onsubmit" avec la fonction "errorMessageForm" sur le formulaire pr empêcher la soumission si mal rempli et
+		     suppresion de l'attribut "disabled" sur le bouton "valider" du formulaire.
 		 
 
 		     

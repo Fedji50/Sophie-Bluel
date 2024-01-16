@@ -2,7 +2,7 @@
 function previewfile () {
     let addPhotoBtn = document.getElementById("addPhoto");
     let input = document.getElementById("image");
-    let image = document.getElementById("preview");
+    let preview = document.getElementById("preview");
     let addFileBtn = document.querySelector(".file-upload");
     let file = input.files;
     let icon = document.querySelector(".fa-image");
@@ -17,7 +17,7 @@ function previewfile () {
         let fileReader = new FileReader();
 
         fileReader.onload = function (event) {
-            image.setAttribute("src", event.target.result);
+            preview.setAttribute("src", event.target.result);
         };
 
         fileReader.readAsDataURL(file[0]);
@@ -32,7 +32,7 @@ function previewfile () {
     // on fait réappaître le contenu de <div class="picture"> pr ajouter une photo :
     returnBtn.addEventListener("click", function () {
         file.length = 0;
-        image.removeAttribute("src");
+        preview.removeAttribute("src");
         addFileBtn.style.visibility = "visible";
         input.style.visibility = "visible";
         icon.style.visibility = "visible";
@@ -40,7 +40,7 @@ function previewfile () {
     });
     closeBtn.addEventListener("click", function () {
         file.length = 0;
-        image.removeAttribute("src");
+        preview.removeAttribute("src");
         addFileBtn.style.visibility = "visible";
         input.style.visibility = "visible";
         icon.style.visibility = "visible";
