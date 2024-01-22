@@ -96,6 +96,12 @@
 16/01/2024 16h50 : _ màj add.js => suppression de la fonction "enableValidationBtn" et création du fichier validationForm.js avec dedans la fonction "errorMessageForm"
 		   _ màj index.html => ajout de l'attribut "onsubmit" avec la fonction "errorMessageForm" sur le formulaire pr empêcher la soumission si mal rempli et
 		     suppresion de l'attribut "disabled" sur le bouton "valider" du formulaire.
+
+22/01/2024 13h35 : _ màj add.js => création de la fonction "emptyfields" qui vident les champs du formulaire si on soumet, revient en arrière ou ferme la modale.
+		     		=> mise en place des promesses du fetch avec 1ère promesse avec la fonction "emptyfields", la réponse du serveur et le traitement de la réponse
+				   en json et 2ème promesse avec le résultat de la réponse, si résultat et pas d'erreur alors création des éléments et insertion dans les div "gallery" et "works".
+				=> mise en place d'un catch en cas d'erreur de la requête fetch.
+		   _ màj works.js => suppression de divers console.log dans le fichier.
 		 
 
 		     

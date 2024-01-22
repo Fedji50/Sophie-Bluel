@@ -83,7 +83,7 @@ async function generatePhotosModal () {
                 const token = localStorage.getItem("token");
                 let iconElement = demo;
                 let id = demo.id; /* utile */
-                console.log("token:",token);
+                // console.log("token:",token);
                 console.log(iconElement);
                 
                 // Changer la dernière partie de l'url du fetch 
@@ -117,35 +117,47 @@ const deleteProjectsModal = document.getElementById("deleteProjects");
 const addProjectsModal = document.getElementById("addProjects");
 const returnBtn = document.querySelector(".return");
 const closeBtn = document.getElementById("close")
-const title = document.getElementById("title");
-const category = document.getElementById("category");
-const input = document.getElementById("image");
-let file = input.files;
 
 
+function emptyFields() {
+    let form = document.getElementById("addProjectForm");
+    let icon = document.querySelector(".fa-image");
+    let note = document.querySelector(".note");
+    let addFileBtn = document.querySelector(".file-upload");
+    const title = document.getElementById("title");
+    const category = document.getElementById("category");
+    const input = document.getElementById("image");
+    let file = input.files;
+    let preview = document.getElementById("preview");
+
+    form.reset();
+    // title.value = "";
+    // category.value = "";
+    // file = "";
+    preview.removeAttribute("src");
+    addFileBtn.style.visibility = "visible";
+    input.style.visibility = "visible";
+    icon.style.visibility = "visible";
+    note.style.visibility = "visible";
+};
 
 addPhotoBtn.addEventListener("click", (event) => {
     event.preventDefault();
     deleteProjectsModal.style.display = "none"
     addProjectsModal.style.display = "flex"
-    title.value = "";
-    category.value = ""; 
-    // validationBtn.style.backgroundColor = "#a7a7a7";
+    emptyFields();
 });
 
 returnBtn.addEventListener("click", (event) => {
     event.preventDefault();
     deleteProjectsModal.style.display = "flex";
     addProjectsModal.style.display = "none";
-    title.value = "";
-    category.value = "";
-    // validationBtn.style.backgroundColor = "#a7a7a7";
+    emptyFields();
 })
 
 closeBtn.addEventListener ("click", (event) => {
     event.preventDefault();
-    title.value = "";
-    category.value = "";
+    emptyFields();
 })
 
 // Récupération des constantes pour le formulaire :
@@ -155,17 +167,14 @@ const addProjectForm = document.getElementById("addProjectForm");
 // Fonction d'ajout de projet avec FormData: 
 function addNewProject (event) {
     
-    const userId = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
-    let fileBlob = file.slice(0,file.name, file.size, file.type);
 
     event.preventDefault();
     console.log("Formulaire soumis");
 
     // Création d'un objet formData:
-    
     const formData = new FormData (addProjectForm);
-    const photoProject = formData.get(fileBlob);
+    const photoProject = formData.get("image");
     const titleProject = formData.get("title");
     const categoryProject = formData.get("category");
     console.log("Projet :", {photoProject, titleProject, categoryProject});
@@ -174,24 +183,111 @@ function addNewProject (event) {
     fetch ("http://localhost:5678/api/works", {
         method : "post",
         headers : {
-            // "accept": "application/json",
-            "content-type" : "multipart/form-data",
+            "accept": "application/json",
+            // "content-type" : "multipart/form-data",
             "Authorization" : `Bearer ${token}`
             },
         body: formData
       
     })
     .then (response => {
-        console.log("Réponse du serveur:", response);
-        return response.json ()
+        console.log("Réponse du serveur :", response);
+        emptyFields();
+        return response.json()
+
     })
     .then (result => {
-        console.log(result);
-    });
+        if (result && !result.error ) {
+            console.log(result);
+
+            const figureGallery = document.createElement("figure");
+            const figureWorks = document.createElement("figure");
+            figureWorks.classList.add("photo");
+            const imageGallery = document.createElement("img");
+            const imageWorks = document.createElement("img");
+            const nomElement = document.createElement("figcaption");
+            const iconWorks = document.createElement("div");
+            iconWorks.classList.add("deletePhoto");
+            iconWorks.innerHTML='<i class="fa-solid fa-trash-can"></i>';
+            figureGallery.dataset.id_work = result.id;
+            figureWorks.dataset.id_work = result.id;
+            iconWorks.dataset.id_work = result.id;
+            imageGallery.src = result.imageUrl;
+            imageWorks.src = result.imageUrl;
+            nomElement.innerHTML = result.title;
+            
+            // Insertion des balises dans le DOM
+            // Insertion dans "gallery":
+            const mainContainer = document.getElementById("gallery");
+            figureGallery.appendChild(imageGallery);
+            figureGallery.appendChild(nomElement);
+            mainContainer.appendChild(figureGallery);
+            //  insertion dans "Works":
+            const modalContainer = document.getElementById("works");
+            modalContainer.appendChild(figureWorks);
+            figureWorks.appendChild(imageWorks);
+            figureWorks.appendChild(iconWorks);
+        };
+        
+    })
+    .catch (error => 
+        console.error("Erreur de la requête fetch :",error));
+
+    // .then (response => {
+    //     console.log("Réponse du serveur:", response);
+    //     console.log("status:", response.status);
+    //     if (response.status === 500) {
+    //         console.log("error");
+    //         throw new Error ("Status = 201", {cause: 3})
+    //     }
+    //     return response.json()
+        
+    // })
+    // .then (result => {
+    //     console.log(result);
+        
+    //     const figureElement = document.createElement("figure");
+    //     figureElement.classList.add("photo");
+    //     const imageElement = document.createElement("img");
+    //     const nomElement = document.createElement("figcaption");
+    //     const mainContainer = document.getElementById("gallery");
+    //     const modalContainer = document.getElementById("works");
+    //     const iconElement = document.createElement("div");
+    //     iconElement.classList.add("deletePhoto");
+    //     iconElement.innerHTML='<i class="fa-solid fa-trash-can"></i>';
+    //     figureElement.dataset.id_work = result.id;
+    //     iconElement.dataset.id_work = result.id;
+    //     imageElement.src = result.imageUrl;
+    //     nomElement.innerHTML = result.title;
+        
+    //     //Insertion des balises dans le fichier index.html et dans le DOM
+    //     figureElement.appendChild(imageElement);
+    //     figureElement.appendChild(nomElement);
+    //     mainContainer.appendChild(figureElement);
+        
+    //     modalContainer.appendChild(figureElement);
+    //     figureElement.appendChild(iconElement);
+    //     let lastFigure = modalContainer.lastChild;
+    //     lastFigure.removeChild(nomElement);
+
+    //     emptyFields();
+        
+    // })
+    // .catch (error => {
+       
+    //     console.error("Erreur lors de l'envoi des données du formulaire.", error)
+    //     if (error.cause === 3 ) {
+    //         console.log("Erreur réponse du serveur")
+    //     }
     
+    // }
+        
+    //     );
     
 
 };
+
+
 // Écouteur d'évènement à la soummision du formulaire:
 
 addProjectForm.addEventListener("submit", addNewProject);

@@ -1,8 +1,6 @@
 //Récupération des fichiers depuis l'api SWAGGER
 const reponse = await fetch("http://localhost:5678/api/works");
 const works = await reponse.json();
-/*console.log(works);*/
-
 
 //Création des différents projets
 function generateProjects (works) {
@@ -21,7 +19,6 @@ function generateProjects (works) {
         figureElement.appendChild(imageElement);
         nomElement.innerHTML = demo.title;
         figureElement.appendChild(nomElement);
-        /*console.log(figureElement);*/
         mainContainer.appendChild(figureElement);
     }
 }

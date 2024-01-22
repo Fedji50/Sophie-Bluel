@@ -30,20 +30,20 @@ function previewfile () {
     };
     // Si on revient sur la page de suppression de projet ou si on ferme la fenêtre,
     // on fait réappaître le contenu de <div class="picture"> pr ajouter une photo :
-    returnBtn.addEventListener("click", function () {
-        file.length = 0;
-        preview.removeAttribute("src");
-        addFileBtn.style.visibility = "visible";
-        input.style.visibility = "visible";
-        icon.style.visibility = "visible";
-        note.style.visibility = "visible";
-    });
-    closeBtn.addEventListener("click", function () {
-        file.length = 0;
-        preview.removeAttribute("src");
-        addFileBtn.style.visibility = "visible";
-        input.style.visibility = "visible";
-        icon.style.visibility = "visible";
-        note.style.visibility = "visible";
-    });
+    // returnBtn.addEventListener("click", function () {
+    //     file.length = 0;
+    //     preview.removeAttribute("src");
+    //     addFileBtn.style.visibility = "visible";
+    //     input.style.visibility = "visible";
+    //     icon.style.visibility = "visible";
+    //     note.style.visibility = "visible";
+    // });
+    // closeBtn.addEventListener("click", function () {
+    //     file.length = 0;
+    //     preview.removeAttribute("src");
+    //     addFileBtn.style.visibility = "visible";
+    //     input.style.visibility = "visible";
+    //     icon.style.visibility = "visible";
+    //     note.style.visibility = "visible";
+    // });
 };
