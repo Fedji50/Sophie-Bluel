@@ -133,7 +133,6 @@ function emptyFields() {
     // form.reset();
     title.value = "";
     category.value = "";
-    // file = undefined;
     input.value = "";
     preview.removeAttribute("src");
     addFileBtn.style.visibility = "visible";
@@ -158,8 +157,8 @@ returnBtn.addEventListener("click", (event) => {
 
 closeBtn.addEventListener ("click", (event) => {
     event.preventDefault();
-    emptyFields();
-})
+    emptyFields();})
+
 
 // Récupération des constantes pour le formulaire :
 
@@ -170,9 +169,16 @@ function addNewProject (event) {
     
     const token = localStorage.getItem("token");
 
+    const title = document.getElementById("title");
+    const category = document.getElementById("category");
+    const input = document.getElementById("image");
+    const preview = document.getElementById("preview");
+    let files = input.files;
+
     event.preventDefault();
 
     // Création d'un objet formData:
+    
     const formData = new FormData (addProjectForm);
     const photoProject = formData.get("image");
     const titleProject = formData.get("title");
@@ -180,7 +186,8 @@ function addNewProject (event) {
     console.log("Projet :", {photoProject, titleProject, categoryProject});
     console.log(formData);
 
-    fetch ("http://localhost:5678/api/works", {
+    if (files.length > 0 && preview.src !== "" && title.value !== "" && category.value !== "") {
+        fetch ("http://localhost:5678/api/works", {
         method : "post",
         headers : {
             "accept": "application/json",
@@ -189,49 +196,55 @@ function addNewProject (event) {
             },
         body: formData
       
-    })
-    .then (response => {
-        console.log("Réponse du serveur :", response);
-        emptyFields();
-        return response.json()
+        })
+        .then (response => {
+            console.log("Réponse du serveur :", response);
+            emptyFields();
+            return response.json()
 
-    })
-    .then (result => {
-        if (result && !result.error ) {
-            console.log(result);
+        })
+        .then (result => {
+            if (result && !result.error ) {
+                console.log(result);
 
-            const figureGallery = document.createElement("figure");
-            const figureWorks = document.createElement("figure");
-            figureWorks.classList.add("photo");
-            const imageGallery = document.createElement("img");
-            const imageWorks = document.createElement("img");
-            const nomElement = document.createElement("figcaption");
-            const iconWorks = document.createElement("div");
-            iconWorks.classList.add("deletePhoto");
-            iconWorks.innerHTML='<i class="fa-solid fa-trash-can"></i>';
-            figureGallery.dataset.id_work = result.id;
-            figureWorks.dataset.id_work = result.id;
-            iconWorks.dataset.id_work = result.id;
-            imageGallery.src = result.imageUrl;
-            imageWorks.src = result.imageUrl;
-            nomElement.innerHTML = result.title;
+                const figureGallery = document.createElement("figure");
+                const figureWorks = document.createElement("figure");
+                figureWorks.classList.add("photo");
+                const imageGallery = document.createElement("img");
+                const imageWorks = document.createElement("img");
+                const nomElement = document.createElement("figcaption");
+                const iconWorks = document.createElement("div");
+                iconWorks.classList.add("deletePhoto");
+                iconWorks.innerHTML='<i class="fa-solid fa-trash-can"></i>';
+                figureGallery.dataset.id_work = result.id;
+                figureWorks.dataset.id_work = result.id;
+                iconWorks.dataset.id_work = result.id;
+                imageGallery.src = result.imageUrl;
+                imageWorks.src = result.imageUrl;
+                nomElement.innerHTML = result.title;
+                
+                // Insertion des balises dans le DOM
+                // Insertion dans "gallery":
+                const mainContainer = document.getElementById("gallery");
+                figureGallery.appendChild(imageGallery);
+                figureGallery.appendChild(nomElement);
+                mainContainer.appendChild(figureGallery);
+                //  insertion dans "Works":
+                const modalContainer = document.getElementById("works");
+                modalContainer.appendChild(figureWorks);
+                figureWorks.appendChild(imageWorks);
+                figureWorks.appendChild(iconWorks);
+            };
             
-            // Insertion des balises dans le DOM
-            // Insertion dans "gallery":
-            const mainContainer = document.getElementById("gallery");
-            figureGallery.appendChild(imageGallery);
-            figureGallery.appendChild(nomElement);
-            mainContainer.appendChild(figureGallery);
-            //  insertion dans "Works":
-            const modalContainer = document.getElementById("works");
-            modalContainer.appendChild(figureWorks);
-            figureWorks.appendChild(imageWorks);
-            figureWorks.appendChild(iconWorks);
-        };
-        
-    })
-    .catch (error => 
-        console.error("Erreur de la requête fetch :",error));
+        })
+        .catch (error => 
+            console.error("Erreur de la requête fetch :",error));
+
+    } else {
+        alert("L'un des champs du formulaire n'est pas rempli correctement."); 
+    };
+
+    
 
     // .then (response => {
     //     console.log("Réponse du serveur:", response);
