@@ -23,7 +23,6 @@ function generateProjects (works) {
     }
 }
 
-
 //Création des listes objets, appartements et Hotels & restaurants
 //Liste complète:
 const allFilterBtn = document.getElementById("all");

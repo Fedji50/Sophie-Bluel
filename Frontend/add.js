@@ -130,10 +130,11 @@ function emptyFields() {
     let file = input.files;
     let preview = document.getElementById("preview");
 
-    form.reset();
-    // title.value = "";
-    // category.value = "";
-    // file = "";
+    // form.reset();
+    title.value = "";
+    category.value = "";
+    // file = undefined;
+    input.value = "";
     preview.removeAttribute("src");
     addFileBtn.style.visibility = "visible";
     input.style.visibility = "visible";
@@ -143,8 +144,8 @@ function emptyFields() {
 
 addPhotoBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    deleteProjectsModal.style.display = "none"
-    addProjectsModal.style.display = "flex"
+    deleteProjectsModal.style.display = "none";
+    addProjectsModal.style.display = "flex";
     emptyFields();
 });
 
@@ -170,7 +171,6 @@ function addNewProject (event) {
     const token = localStorage.getItem("token");
 
     event.preventDefault();
-    console.log("Formulaire soumis");
 
     // Création d'un objet formData:
     const formData = new FormData (addProjectForm);
@@ -289,10 +289,8 @@ function addNewProject (event) {
 
 
 // Écouteur d'évènement à la soummision du formulaire:
-
 addProjectForm.addEventListener("submit", addNewProject);
-       
-       
+              
 generatePhotosModal();
 
 

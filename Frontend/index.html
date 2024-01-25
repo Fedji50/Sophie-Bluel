@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="https://kit.fontawesome.com/28e03385b0.js" crossorigin="anonymous"></script>
 	<script src="preview.js"></script>
-	<script src="validationForm.js"></script>
+	<script src="validationForm.js" defer></script>
 	<script type="module" src="works.js" defer></script>
 	<script type="module" src="add.js" defer></script>
 
@@ -78,7 +78,7 @@
 								<div class="modal-header">
 									<h1>Ajout photo</h1>
 								</div>
-								<form id="addProjectForm" action="http://localhost:5678/api/works" method="POST" onsubmit="return errorMessageForm()">
+								<form id="addProjectForm" action="http://localhost:5678/api/works" method="POST" onsubmit="return errorMessageForm();">
 									<div class="picture">
 										<i class="fa-regular fa-image fa-5x"></i>
 										<label for="image"><span class="file-upload">+ Ajouter photo</span>	
@@ -92,7 +92,6 @@
 										<br/>
 										<p class="note">jpg, png : 4mo max</p>
 										<img alt="" class="preview" id="preview">
-										
 									</div>
 										<br/>
 									<label for="title">Titre</label><br/>
