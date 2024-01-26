@@ -7,6 +7,7 @@ function errorMessageForm () {
     const preview = document.getElementById("preview");
     let files = input.files;
 
+
     // console.log("input.value",input.value);
     // console.log("preview.src",preview.src);
     // console.log("title.value",title.value);
