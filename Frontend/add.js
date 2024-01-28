@@ -84,7 +84,9 @@ async function generatePhotosModal () {
                 let iconElement = demo;
                 let id = demo.id; /* utile */
                 // console.log("token:",token);
+
                 console.log(iconElement);
+                console.log(figureElement);
                 
                 // Changer la dernière partie de l'url du fetch 
                 fetch (`http://localhost:5678/api/works/${id}`,{
@@ -109,7 +111,7 @@ async function generatePhotosModal () {
             );
         
     }
-}
+};
 
 // Récupération des constantes pour afficher la page d'ajout de projet et masquer celle suppression de projet:
 const addPhotoBtn = document.getElementById("addPhoto");
@@ -234,6 +236,37 @@ function addNewProject (event) {
                 modalContainer.appendChild(figureWorks);
                 figureWorks.appendChild(imageWorks);
                 figureWorks.appendChild(iconWorks);
+
+                // Partie pour la suppression:
+                iconWorks.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    const token = localStorage.getItem("token");
+                    let id = result.id; /* utile */
+                    console.log(iconWorks);
+                    console.log(figureGallery);
+                    console.log(figureWorks);
+                    
+                    // Appel à fetch avec méthode Delete:
+                    fetch (`http://localhost:5678/api/works/${id}`,{
+                        method : "DELETE",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        }}
+                    )
+                    .then(response => {
+                    if (response.status === 200 || response.status === 204) {
+                        let gallery = document.getElementById("gallery");
+                        let galleryDeletedFigure = gallery.querySelector(`[data-id_work="${id}"]`);
+                        let modalDeletedFigure = modalContainer.querySelector(`[data-id_work="${id}"]`);
+                        galleryDeletedFigure.remove()
+                        modalDeletedFigure.remove()
+                        console.log("La suppression a réussi")
+                        } else {
+                        console.log("Erreur lors de la suppression de l'élément")
+                        }})
+                    .catch(error => console.error("Error:", error));
+                    })
+
             };
             
         })
@@ -245,59 +278,6 @@ function addNewProject (event) {
     };
 
     
-
-    // .then (response => {
-    //     console.log("Réponse du serveur:", response);
-    //     console.log("status:", response.status);
-    //     if (response.status === 500) {
-    //         console.log("error");
-    //         throw new Error ("Status = 201", {cause: 3})
-    //     }
-    //     return response.json()
-        
-    // })
-    // .then (result => {
-    //     console.log(result);
-        
-    //     const figureElement = document.createElement("figure");
-    //     figureElement.classList.add("photo");
-    //     const imageElement = document.createElement("img");
-    //     const nomElement = document.createElement("figcaption");
-    //     const mainContainer = document.getElementById("gallery");
-    //     const modalContainer = document.getElementById("works");
-    //     const iconElement = document.createElement("div");
-    //     iconElement.classList.add("deletePhoto");
-    //     iconElement.innerHTML='<i class="fa-solid fa-trash-can"></i>';
-    //     figureElement.dataset.id_work = result.id;
-    //     iconElement.dataset.id_work = result.id;
-    //     imageElement.src = result.imageUrl;
-    //     nomElement.innerHTML = result.title;
-        
-    //     //Insertion des balises dans le fichier index.html et dans le DOM
-    //     figureElement.appendChild(imageElement);
-    //     figureElement.appendChild(nomElement);
-    //     mainContainer.appendChild(figureElement);
-        
-    //     modalContainer.appendChild(figureElement);
-    //     figureElement.appendChild(iconElement);
-    //     let lastFigure = modalContainer.lastChild;
-    //     lastFigure.removeChild(nomElement);
-
-    //     emptyFields();
-        
-    // })
-    // .catch (error => {
-       
-    //     console.error("Erreur lors de l'envoi des données du formulaire.", error)
-    //     if (error.cause === 3 ) {
-    //         console.log("Erreur réponse du serveur")
-    //     }
-    
-    // }
-        
-    //     );
-    
-
 };
 
 
@@ -305,5 +285,6 @@ function addNewProject (event) {
 addProjectForm.addEventListener("submit", addNewProject);
               
 generatePhotosModal();
+
 
 
