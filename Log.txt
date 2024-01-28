@@ -107,6 +107,10 @@
 		     requête Fetch et création du nouveau projet sinon message d'erreur. 
 		   _ index.html => correction formulaire "addProjectForm" => suppression attribut "required" qui empêché le focus sur l'input pour la verification des champs vides pour envoyer
 		     le message d'erreur à l'utilisateur.
+25/01/2024 16h05 : _ màj add.js => inclusion de la fonction "errorMessageForm" dans la fonction "addNewProject" : mise en place d'une condition => si le formulaire est bien rempli alors soumission,
+		     requête Fetch et création du nouveau projet sinon message d'erreur. 
+		   _ index.html => correction formulaire "addProjectForm" => suppression attribut "required" qui empêché le focus sur l'input pour la verification des champs vides pour envoyer
+		     le message d'erreur à l'utilisateur.
 		 
 
 		     
