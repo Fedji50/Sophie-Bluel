@@ -111,6 +111,13 @@
 		     requête Fetch et création du nouveau projet sinon message d'erreur. Rajout de la partie de suppression (fetch Delete) pour effacer le projet qui vient d'être créé.
 		   _ index.html => correction formulaire "addProjectForm" => suppression attribut "required" qui empêché le focus sur l'input pour la verification des champs vides pour envoyer
 		     le message d'erreur à l'utilisateur.
-		 
+
+01/02/2024 22h40 : _ màj login.js => modification fonction "saveUserLogin" : remaniement de la fonction avec condition  de verification du mail et password => si emailTag === "sophie.bluel@test.tld" && passwordTag === "S0phie"
+		     alors déclenchement du fetch puis promesse 1 puis promesse 2 avec data et sauvegarde des données et mise en place d'un catch en cas d'erreur. Sinon message d'alerte sur la combinaison mail/password.
+		   _ mise en place addEventListener à la soumission du formulaire pour déclencher la fonction "saveUserLogin".
+		   _ ajout d'un event.preventDefault() pour éviter le chargement de la page et mise en paramètre de "event"dans la fonction.
+		   _ suppression de la fonction "errorEmailPassword" => mise en place condition dans "saveUserLogin".
+		   _ màj login.html => Rectification du formulaire de connexion => suppression de la datalist pour la saisie.
+		   
 
 		     

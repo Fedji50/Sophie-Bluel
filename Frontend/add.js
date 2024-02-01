@@ -190,88 +190,88 @@ function addNewProject (event) {
 
     if (files.length > 0 && preview.src !== "" && title.value !== "" && category.value !== "") {
         fetch ("http://localhost:5678/api/works", {
-        method : "post",
-        headers : {
-            "accept": "application/json",
-            // "content-type" : "multipart/form-data",
-            "Authorization" : `Bearer ${token}`
-            },
-        body: formData
-      
-        })
-        .then (response => {
-            console.log("Réponse du serveur :", response);
-            emptyFields();
-            return response.json()
+            method : "post",
+            headers : {
+                "accept": "application/json",
+                // "content-type" : "multipart/form-data",
+                "Authorization" : `Bearer ${token}`
+                },
+            body: formData
+        
+            })
+            .then (response => {
+                console.log("Réponse du serveur :", response);
+                emptyFields();
+                return response.json()
 
-        })
-        .then (result => {
-            if (result && !result.error ) {
-                console.log(result);
+            })
+            .then (result => {
+                if (result && !result.error ) {
+                    console.log(result);
 
-                const figureGallery = document.createElement("figure");
-                const figureWorks = document.createElement("figure");
-                figureWorks.classList.add("photo");
-                const imageGallery = document.createElement("img");
-                const imageWorks = document.createElement("img");
-                const nomElement = document.createElement("figcaption");
-                const iconWorks = document.createElement("div");
-                iconWorks.classList.add("deletePhoto");
-                iconWorks.innerHTML='<i class="fa-solid fa-trash-can"></i>';
-                figureGallery.dataset.id_work = result.id;
-                figureWorks.dataset.id_work = result.id;
-                iconWorks.dataset.id_work = result.id;
-                imageGallery.src = result.imageUrl;
-                imageWorks.src = result.imageUrl;
-                nomElement.innerHTML = result.title;
-                
-                // Insertion des balises dans le DOM
-                // Insertion dans "gallery":
-                const mainContainer = document.getElementById("gallery");
-                figureGallery.appendChild(imageGallery);
-                figureGallery.appendChild(nomElement);
-                mainContainer.appendChild(figureGallery);
-                //  insertion dans "Works":
-                const modalContainer = document.getElementById("works");
-                modalContainer.appendChild(figureWorks);
-                figureWorks.appendChild(imageWorks);
-                figureWorks.appendChild(iconWorks);
-
-                // Partie pour la suppression:
-                iconWorks.addEventListener("click", (event) => {
-                    event.preventDefault();
-                    const token = localStorage.getItem("token");
-                    let id = result.id; /* utile */
-                    console.log(iconWorks);
-                    console.log(figureGallery);
-                    console.log(figureWorks);
+                    const figureGallery = document.createElement("figure");
+                    const figureWorks = document.createElement("figure");
+                    figureWorks.classList.add("photo");
+                    const imageGallery = document.createElement("img");
+                    const imageWorks = document.createElement("img");
+                    const nomElement = document.createElement("figcaption");
+                    const iconWorks = document.createElement("div");
+                    iconWorks.classList.add("deletePhoto");
+                    iconWorks.innerHTML='<i class="fa-solid fa-trash-can"></i>';
+                    figureGallery.dataset.id_work = result.id;
+                    figureWorks.dataset.id_work = result.id;
+                    iconWorks.dataset.id_work = result.id;
+                    imageGallery.src = result.imageUrl;
+                    imageWorks.src = result.imageUrl;
+                    nomElement.innerHTML = result.title;
                     
-                    // Appel à fetch avec méthode Delete:
-                    fetch (`http://localhost:5678/api/works/${id}`,{
-                        method : "DELETE",
-                        headers: {
-                            "Authorization": `Bearer ${token}`
-                        }}
-                    )
-                    .then(response => {
-                    if (response.status === 200 || response.status === 204) {
-                        let gallery = document.getElementById("gallery");
-                        let galleryDeletedFigure = gallery.querySelector(`[data-id_work="${id}"]`);
-                        let modalDeletedFigure = modalContainer.querySelector(`[data-id_work="${id}"]`);
-                        galleryDeletedFigure.remove()
-                        modalDeletedFigure.remove()
-                        console.log("La suppression a réussi")
-                        } else {
-                        console.log("Erreur lors de la suppression de l'élément")
-                        }})
-                    .catch(error => console.error("Error:", error));
-                    })
+                    // Insertion des balises dans le DOM
+                    // Insertion dans "gallery":
+                    const mainContainer = document.getElementById("gallery");
+                    figureGallery.appendChild(imageGallery);
+                    figureGallery.appendChild(nomElement);
+                    mainContainer.appendChild(figureGallery);
+                    //  insertion dans "Works":
+                    const modalContainer = document.getElementById("works");
+                    modalContainer.appendChild(figureWorks);
+                    figureWorks.appendChild(imageWorks);
+                    figureWorks.appendChild(iconWorks);
 
-            };
-            
-        })
-        .catch (error => 
-            console.error("Erreur de la requête fetch :",error));
+                    // Partie pour la suppression du nouveau projet créé:
+                    iconWorks.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        const token = localStorage.getItem("token");
+                        let id = result.id; /* utile */
+                        console.log(iconWorks);
+                        console.log(figureGallery);
+                        console.log(figureWorks);
+                        
+                        // Appel à fetch avec méthode Delete:
+                        fetch (`http://localhost:5678/api/works/${id}`,{
+                            method : "DELETE",
+                            headers: {
+                                "Authorization": `Bearer ${token}`
+                            }}
+                        )
+                        .then(response => {
+                        if (response.status === 200 || response.status === 204) {
+                            let gallery = document.getElementById("gallery");
+                            let galleryDeletedFigure = gallery.querySelector(`[data-id_work="${id}"]`);
+                            let modalDeletedFigure = modalContainer.querySelector(`[data-id_work="${id}"]`);
+                            galleryDeletedFigure.remove()
+                            modalDeletedFigure.remove()
+                            console.log("La suppression a réussi")
+                            } else {
+                            console.log("Erreur lors de la suppression de l'élément")
+                            }})
+                        .catch(error => console.error("Error:", error));
+                        })
+
+                };
+                
+            })
+            .catch (error => 
+                console.error("Erreur de la requête fetch :",error));
 
     } else {
         alert("L'un des champs du formulaire n'est pas rempli correctement."); 
