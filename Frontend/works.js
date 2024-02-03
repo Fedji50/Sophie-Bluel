@@ -5,16 +5,16 @@ const works = await reponse.json();
 //Création des différents projets
 function generateProjects (works) {
     for (let i = 0 ; i < works.length ; i++){
-        //Création des différentes balises de la galerie de travaux
+        // Création de la variable demo pour traiter tous les éléments de la boucle: 
         const demo = works[i];
-        /*console.log(demo)*/
-
+        
+        //Création des différentes balises de la galerie de travaux:
         const figureElement = document.createElement("figure");
         figureElement.dataset.id_work = demo.id;
         const imageElement = document.createElement("img");
         const nomElement = document.createElement("figcaption");
         const mainContainer = document.getElementById("gallery");
-        //Insertion des balises dans le fichier index.html et dans le DOM
+        //Insertion des balises dans le fichier index.html et dans le DOM:
         imageElement.src = demo.imageUrl;
         figureElement.appendChild(imageElement);
         nomElement.innerHTML = demo.title;
@@ -36,7 +36,6 @@ const objectsFilterBtn = document.getElementById("objects");
 
 objectsFilterBtn.addEventListener("click", function () {
     const objectsList = works.filter((work) => work.categoryId === 1);
-    console.log(objectsList);
     document.querySelector(".gallery").innerHTML= "";
     generateProjects(objectsList);    
 });
@@ -45,7 +44,6 @@ const appartmentsFilterBtn = document.getElementById("appartments");
 
 appartmentsFilterBtn.addEventListener("click", function () {
     const appartmentsList = works.filter((work) => work.categoryId === 2);
-    console.log(appartmentsList);
     document.querySelector(".gallery").innerHTML= "";
     generateProjects(appartmentsList);
 });
@@ -54,7 +52,6 @@ const hotelsRestoFilterBtn = document.getElementById("hotels-restaurants");
 
 hotelsRestoFilterBtn.addEventListener("click", function () {
     const hotelsRestoList = works.filter((work) => work.categoryId === 3);
-    console.log(hotelsRestoList);
     document.querySelector(".gallery").innerHTML= "";
     generateProjects(hotelsRestoList);
 });
@@ -63,8 +60,6 @@ let userId = window.localStorage.getItem("userId");
 userId = userId || "";
 let token = window.localStorage.getItem("token");
 token = token || "";
-console.log("userId =",userId);
-console.log("token =",token);
 //fonction pour afficher les éléments du mode édition quand l'utilisateur est loggé:
 function editionMode (userId, token) {
     //Récupération des différents éléments du DOM:

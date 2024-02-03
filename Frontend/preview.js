@@ -1,14 +1,11 @@
 // Récupération de l'image que l'on veut prévisualiser et de celle que l'on upload:
 function previewfile () {
-    // let input = event.target;
     let input = document.getElementById("image");
     let preview = document.getElementById("preview");
     let addFileBtn = document.querySelector(".file-upload");
     let file = input.files;
     let icon = document.querySelector(".fa-image");
     let note = document.querySelector(".note");
-    
-    // console.log(input.files);
 
     if (file.length > 0) {
         
@@ -25,6 +22,5 @@ function previewfile () {
         input.style.display = "none";
         icon.style.visibility = "hidden";
         note.style.visibility = "hidden";  
-    };
-    
+    }    
 };
