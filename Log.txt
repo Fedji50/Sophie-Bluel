@@ -119,7 +119,7 @@
 		   _ suppression de la fonction "errorEmailPassword" => mise en place condition dans "saveUserLogin".
 		   _ màj login.html => Rectification du formulaire de connexion => suppression de la datalist pour la saisie.
 
-03/02/2024 22h40 : _ correction des erreurs de syntaxe sur index.html, login.html, style.css, works.js, login.js, add.js, preview.js
+09/02/2024 22h40 : _ correction des erreurs de syntaxe sur index.html, login.html, style.css, works.js, login.js, add.js, preview.js
 		   
 
 		     

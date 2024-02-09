@@ -12,16 +12,16 @@ function generateProjects (works) {
         const figureElement = document.createElement("figure");
         figureElement.dataset.id_work = demo.id;
         const imageElement = document.createElement("img");
+        imageElement.src = demo.imageUrl;
         const nomElement = document.createElement("figcaption");
+        nomElement.innerHTML = demo.title;
         const mainContainer = document.getElementById("gallery");
         //Insertion des balises dans le fichier index.html et dans le DOM:
-        imageElement.src = demo.imageUrl;
         figureElement.appendChild(imageElement);
-        nomElement.innerHTML = demo.title;
         figureElement.appendChild(nomElement);
         mainContainer.appendChild(figureElement);
     }
-}
+};
 
 //Création des listes objets, appartements et Hotels & restaurants
 //Liste complète:
@@ -36,7 +36,7 @@ const objectsFilterBtn = document.getElementById("objects");
 
 objectsFilterBtn.addEventListener("click", function () {
     const objectsList = works.filter((work) => work.categoryId === 1);
-    document.querySelector(".gallery").innerHTML= "";
+    document.querySelector(".gallery").innerHTML= ""; // Sert à vider le contenu de la galerie pour y afficher le contenu trié:
     generateProjects(objectsList);    
 });
 //Liste Appartements:
@@ -60,6 +60,7 @@ let userId = window.localStorage.getItem("userId");
 userId = userId || "";
 let token = window.localStorage.getItem("token");
 token = token || "";
+
 //fonction pour afficher les éléments du mode édition quand l'utilisateur est loggé:
 function editionMode (userId, token) {
     //Récupération des différents éléments du DOM:
